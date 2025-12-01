@@ -20,7 +20,7 @@ const VideoSchema = new mongoose.Schema({
   description: String,
   duration: String,
   thumbnail: String,
-  category: String,
+  category: [String],
   type: {
     type: String,
     enum: ['video', 'live'],

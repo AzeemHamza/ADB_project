@@ -1,12 +1,12 @@
 const fixturesData = [
-  // Today's fixtures
+  // Today's fixtures - using current date
   {
     fixtureId: 'FIX-401',
     sport: 'Football',
     league: 'Champions League',
     homeTeam: { name: 'Bayern Munich', shortCode: 'BAY' },
     awayTeam: { name: 'Paris SG', shortCode: 'PSG' },
-    date: new Date(),
+    date: new Date(), // This will be today's date
     time: '19:45',
     venue: 'Allianz Arena',
     status: 'Scheduled',
@@ -21,7 +21,7 @@ const fixturesData = [
     league: 'NBA',
     homeTeam: { name: 'Golden State Warriors', shortCode: 'GSW' },
     awayTeam: { name: 'Phoenix Suns', shortCode: 'PHX' },
-    date: new Date(),
+    date: new Date(), // Today
     time: '02:30',
     venue: 'Chase Center',
     status: 'Scheduled',
@@ -35,7 +35,7 @@ const fixturesData = [
     league: 'T20 World Cup',
     homeTeam: { name: 'England', shortCode: 'ENG' },
     awayTeam: { name: 'Pakistan', shortCode: 'PAK' },
-    date: new Date(),
+    date: new Date(), // Today
     time: '08:00',
     venue: 'Dubai International Stadium',
     status: 'Scheduled',
@@ -49,7 +49,7 @@ const fixturesData = [
     league: 'Australian Open',
     homeTeam: { name: 'Rafael Nadal', shortCode: 'RNA' },
     awayTeam: { name: 'Daniil Medvedev', shortCode: 'DME' },
-    date: new Date(),
+    date: new Date(), // Today
     time: '14:00',
     venue: 'Rod Laver Arena',
     status: 'Scheduled',
@@ -63,7 +63,7 @@ const fixturesData = [
     league: 'UFC',
     homeTeam: { name: 'Israel Adesanya', shortCode: 'IAD' },
     awayTeam: { name: 'Alex Pereira', shortCode: 'APE' },
-    date: new Date(),
+    date: new Date(), // Today
     time: '23:00',
     venue: 'T-Mobile Arena',
     status: 'Scheduled',
@@ -77,7 +77,7 @@ const fixturesData = [
     league: 'Premier League',
     homeTeam: { name: 'Chelsea', shortCode: 'CHE' },
     awayTeam: { name: 'Arsenal', shortCode: 'ARS' },
-    date: new Date(),
+    date: new Date(), // Today
     time: '20:00',
     venue: 'Stamford Bridge',
     status: 'Scheduled',
@@ -91,7 +91,7 @@ const fixturesData = [
     league: 'MLB',
     homeTeam: { name: 'NY Yankees', shortCode: 'NYY' },
     awayTeam: { name: 'Boston Red Sox', shortCode: 'BOS' },
-    date: new Date(),
+    date: new Date(), // Today
     time: '01:05',
     venue: 'Yankee Stadium',
     status: 'Scheduled',
@@ -105,7 +105,7 @@ const fixturesData = [
     league: 'NHL',
     homeTeam: { name: 'Toronto Maple Leafs', shortCode: 'TOR' },
     awayTeam: { name: 'Montreal Canadiens', shortCode: 'MTL' },
-    date: new Date(),
+    date: new Date(), // Today
     time: '00:00',
     venue: 'Scotiabank Arena',
     status: 'Scheduled',
@@ -113,14 +113,14 @@ const fixturesData = [
     competition: 'National Hockey League',
     isActive: true
   },
-  // Upcoming fixtures
+  // Upcoming fixtures - next few days
   {
     fixtureId: 'FIX-409',
     sport: 'Football',
     league: 'Premier League',
     homeTeam: { name: 'Manchester United', shortCode: 'MUN' },
     awayTeam: { name: 'Liverpool', shortCode: 'LIV' },
-    date: new Date(Date.now() + 86400000),
+    date: new Date(Date.now() + 86400000), // Tomorrow
     time: '15:00',
     venue: 'Old Trafford',
     status: 'Scheduled',
@@ -135,7 +135,7 @@ const fixturesData = [
     league: 'IPL',
     homeTeam: { name: 'Mumbai Indians', shortCode: 'MI' },
     awayTeam: { name: 'Chennai Super Kings', shortCode: 'CSK' },
-    date: new Date(Date.now() + 86400000),
+    date: new Date(Date.now() + 86400000), // Tomorrow
     time: '19:30',
     venue: 'Wankhede Stadium',
     status: 'Scheduled',
@@ -149,10 +149,10 @@ const fixturesData = [
     league: 'NBA',
     homeTeam: { name: 'LA Lakers', shortCode: 'LAL' },
     awayTeam: { name: 'Boston Celtics', shortCode: 'BOS' },
-    date: new Date(Date.now() + 172800000),
+    date: new Date(Date.now() + 172800000), // Day after tomorrow
     time: '23:00',
     venue: 'Staples Center',
-    status: 'Scheduled',
+    status: 'upcoming',
     round: 'Regular Season',
     competition: 'National Basketball Association',
     isActive: true
@@ -163,10 +163,10 @@ const fixturesData = [
     league: 'Wimbledon',
     homeTeam: { name: 'Novak Djokovic', shortCode: 'NDJ' },
     awayTeam: { name: 'Roger Federer', shortCode: 'RFE' },
-    date: new Date(Date.now() + 259200000),
+    date: new Date(Date.now() + 259200000), // 3 days from now
     time: '13:00',
     venue: 'Centre Court',
-    status: 'Scheduled',
+    status: 'upcoming',
     round: 'Final',
     competition: 'Wimbledon Championships',
     isActive: true
@@ -177,10 +177,10 @@ const fixturesData = [
     league: 'Six Nations',
     homeTeam: { name: 'England', shortCode: 'ENG' },
     awayTeam: { name: 'Wales', shortCode: 'WAL' },
-    date: new Date(Date.now() + 345600000),
+    date: new Date(Date.now() + 345600000), // 4 days from now
     time: '14:30',
     venue: 'Twickenham Stadium',
-    status: 'Scheduled',
+    status: 'upcoming',
     round: 'Round 3',
     competition: 'Six Nations Championship',
     isActive: true
@@ -191,10 +191,10 @@ const fixturesData = [
     league: 'Masters Tournament',
     homeTeam: { name: 'Tiger Woods', shortCode: 'TWO' },
     awayTeam: { name: 'Rory McIlroy', shortCode: 'RMC' },
-    date: new Date(Date.now() + 432000000),
+    date: new Date(Date.now() + 432000000), // 5 days from now
     time: '08:00',
     venue: 'Augusta National',
-    status: 'Scheduled',
+    status: 'upcoming',
     round: 'Final Round',
     competition: 'Masters Tournament',
     isActive: true
@@ -205,10 +205,10 @@ const fixturesData = [
     league: 'WBC Heavyweight',
     homeTeam: { name: 'Tyson Fury', shortCode: 'TFU' },
     awayTeam: { name: 'Anthony Joshua', shortCode: 'AJ' },
-    date: new Date(Date.now() + 518400000),
+    date: new Date(Date.now() + 518400000), // 6 days from now
     time: '22:00',
     venue: 'Wembley Stadium',
-    status: 'Scheduled',
+    status: 'upcoming',
     round: 'Main Event',
     competition: 'WBC Heavyweight Title',
     isActive: true
@@ -219,22 +219,22 @@ const fixturesData = [
     league: 'Monaco Grand Prix',
     homeTeam: { name: 'Lewis Hamilton', shortCode: 'LHA' },
     awayTeam: { name: 'Max Verstappen', shortCode: 'MVE' },
-    date: new Date(Date.now() + 604800000),
+    date: new Date(Date.now() + 604800000), // 7 days from now
     time: '14:00',
     venue: 'Circuit de Monaco',
-    status: 'Scheduled',
+    status: 'upcoming',
     round: 'Race',
     competition: 'Formula 1 World Championship',
     isActive: true
   },
-  // Additional fixtures from games data
+  // Additional current fixtures
   {
     fixtureId: 'PL-2024-001',
     sport: 'Football',
     league: 'Premier League',
     homeTeam: { name: 'Manchester City', shortCode: 'MCI' },
     awayTeam: { name: 'Arsenal', shortCode: 'ARS' },
-    date: new Date("2024-06-15"),
+    date: new Date(), // Today
     time: "17:30",
     venue: "Etihad Stadium",
     status: "upcoming",
@@ -247,7 +247,7 @@ const fixturesData = [
     league: 'Champions League',
     homeTeam: { name: 'Real Madrid', shortCode: 'RMA' },
     awayTeam: { name: 'Bayern Munich', shortCode: 'BAY' },
-    date: new Date("2024-06-18"),
+    date: new Date(), // Today
     time: "20:00",
     venue: "Santiago Bernabéu",
     status: "upcoming",
@@ -260,7 +260,7 @@ const fixturesData = [
     league: 'NBA',
     homeTeam: { name: 'Boston Celtics', shortCode: 'BOS' },
     awayTeam: { name: 'Los Angeles Lakers', shortCode: 'LAL' },
-    date: new Date("2024-06-10"),
+    date: new Date(), // Today
     time: "20:00",
     venue: "TD Garden",
     status: "upcoming",
@@ -273,7 +273,7 @@ const fixturesData = [
     league: 'NBA',
     homeTeam: { name: 'Golden State Warriors', shortCode: 'GSW' },
     awayTeam: { name: 'Boston Celtics', shortCode: 'BOS' },
-    date: new Date("2024-06-20"),
+    date: new Date(Date.now() + 86400000), // Tomorrow
     time: "22:30",
     venue: "Chase Center",
     status: "upcoming",
@@ -286,7 +286,7 @@ const fixturesData = [
     league: 'MLB',
     homeTeam: { name: 'New York Yankees', shortCode: 'NYY' },
     awayTeam: { name: 'Boston Red Sox', shortCode: 'BOS' },
-    date: new Date("2024-06-15"),
+    date: new Date(), // Today
     time: "19:05",
     venue: "Yankee Stadium",
     status: "upcoming",
@@ -299,7 +299,7 @@ const fixturesData = [
     league: 'MLB',
     homeTeam: { name: 'Los Angeles Dodgers', shortCode: 'LAD' },
     awayTeam: { name: 'San Francisco Giants', shortCode: 'SF' },
-    date: new Date("2024-06-17"),
+    date: new Date(Date.now() + 86400000), // Tomorrow
     time: "21:10",
     venue: "Dodger Stadium",
     status: "upcoming",

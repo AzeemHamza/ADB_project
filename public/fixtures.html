@@ -1035,19 +1035,9 @@
           <a role="menuitem" href="fixtures.html" class="nav-link nav-active" aria-current="page">Fixtures</a>
         </li>
 
-        <!-- More Dropdown -->
-       <li role="none" class="has-dropdown" aria-haspopup="true">
-          <button class="nav-link nav-button" aria-controls="moreMenu" aria-haspopup="true" aria-expanded="false">
-            More <span class="caret">▾</span>
-          </button>
-          <div id="moreMenu" class="dropdown" role="menu" aria-hidden="true">
-            <a role="menuitem" href="more/podcasts.html" class="dropdown-item">Podcasts</a>
-            <a role="menuitem" href="more/highlights.html" class="dropdown-item">Video Highlights</a>
-            <a role="menuitem" href="more/news-archive.html" class="dropdown-item">News Archive</a>
-            <a role="menuitem" href="more/statistics.html" class="dropdown-item">Statistics</a>
-            <a role="menuitem" href="more/transfers.html" class="dropdown-item">Transfers</a>
-            <a role="menuitem" href="more/injury-news.html" class="dropdown-item">Injury News</a>
-          </div>
+        <!-- Profile Link -->
+        <li role="none">
+          <a role="menuitem" href="profile.html" class="nav-link nav-active" aria-current="page">Profile</a>
         </li>
       </ul>
     </nav>
@@ -1133,18 +1123,9 @@
         <li><a href="teams.html" class="mobile-nav-link">Teams</a></li>
         <li><a href="fixtures.html" class="mobile-nav-link mobile-nav-active">Fixtures</a></li>
         
-        <li class="mobile-dropdown">
-          <button class="mobile-nav-link mobile-nav-button" aria-expanded="false">
-            More <span class="mobile-caret">▾</span>
-          </button>
-          <div class="mobile-dropdown-menu" aria-hidden="true">
-            <a href="podcasts.html" class="mobile-dropdown-item">Podcasts</a>
-            <a href="highlights.html" class="mobile-dropdown-item">Video Highlights</a>
-            <a href="news-archive.html" class="mobile-dropdown-item">News Archive</a>
-            <a href="statistics.html" class="mobile-dropdown-item">Statistics</a>
-            <a href="transfers.html" class="mobile-dropdown-item">Transfers</a>
-            <a href="injury-news.html" class="mobile-dropdown-item">Injury News</a>
-          </div>
+        <!-- Profile Link -->
+        <li role="none">
+          <a role="menuitem" href="profile.html" class="nav-link nav-active" aria-current="page">Profile</a>
         </li>
       </ul>
     </nav>
@@ -1183,29 +1164,23 @@
   </div>
 
   <!-- Date Navigation -->
-  <div class="date-navigation">
+  <div class="date-navigation" aria-label="Date navigation for fixtures">
     <div class="date-nav-controls">
-      <button class="date-nav-btn" id="prevDateBtn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-        </svg>
+      <button class="date-nav-btn" id="prevDateBtn" aria-label="Previous day">
+        <i class="fas fa-chevron-left"></i>
       </button>
-      
-      <div class="date-display">
-        <span id="currentDateRange">Today, November 17</span>
+      <div class="date-display" id="currentDateRange">
+        Today, <span id="currentDate"></span>
       </div>
-      
-      <button class="date-nav-btn" id="nextDateBtn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-        </svg>
+      <button class="date-nav-btn" id="nextDateBtn" aria-label="Next day">
+        <i class="fas fa-chevron-right"></i>
       </button>
     </div>
     
     <div class="quick-dates">
       <button class="quick-date active" data-days="0">Today</button>
       <button class="quick-date" data-days="1">Tomorrow</button>
-      <button class="quick-date" data-days="7">Next 7 Days</button>
+      <button class="quick-date" data-days="7">Next Week</button>
     </div>
   </div>
 
@@ -1384,7 +1359,7 @@
 <div id="toast" class="toast"></div>
 
 <script>
-// Fixtures App with Sample Data (Fixed Version)
+// Fixtures App with Database Integration
 class FixturesApp {
   constructor() {
     this.state = {
@@ -1397,7 +1372,12 @@ class FixturesApp {
         league: 'All',
         time: 'All'
       },
-      viewMode: 'list'
+      viewMode: 'list',
+      loading: {
+        today: true,
+        upcoming: true,
+        tournaments: true
+      }
     };
     
     this.fixturesData = {
@@ -1405,6 +1385,9 @@ class FixturesApp {
       upcoming: [],
       tournaments: []
     };
+    
+    // Initialize date display
+    this.initDateDisplay();
     
     this.init();
   }
@@ -1423,202 +1406,469 @@ class FixturesApp {
     this.setupSearch();
   }
 
+  initDateDisplay() {
+    const today = new Date();
+    const dateDisplay = document.getElementById('currentDate');
+    if (dateDisplay) {
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      dateDisplay.textContent = today.toLocaleDateString('en-US', options);
+    }
+  }
+
   async loadFixturesData() {
     try {
-      console.log('📥 Loading fixtures data from sample data...');
+      console.log('📥 Loading fixtures data from server...');
       
-      // Use the sample data that's already in the HTML
-      const sampleData = [
-        // Today's fixtures
-        {
-          fixtureId: 'FIX-401',
-          sport: 'Football',
-          league: 'Champions League',
-          homeTeam: { name: 'Bayern Munich', shortCode: 'BAY' },
-          awayTeam: { name: 'Paris SG', shortCode: 'PSG' },
-          date: new Date(),
-          time: '19:45',
-          venue: 'Allianz Arena',
-          status: 'Scheduled',
-          round: 'Group Stage',
-          competition: 'UEFA Champions League',
-          isFeatured: true,
-          isActive: true
-        },
-        {
-          fixtureId: 'FIX-402',
-          sport: 'Basketball',
-          league: 'NBA',
-          homeTeam: { name: 'Golden State Warriors', shortCode: 'GSW' },
-          awayTeam: { name: 'Phoenix Suns', shortCode: 'PHX' },
-          date: new Date(),
-          time: '02:30',
-          venue: 'Chase Center',
-          status: 'Scheduled',
-          round: 'Regular Season',
-          competition: 'National Basketball Association',
-          isActive: true
-        },
-        {
-          fixtureId: 'FIX-403',
-          sport: 'Cricket',
-          league: 'T20 World Cup',
-          homeTeam: { name: 'England', shortCode: 'ENG' },
-          awayTeam: { name: 'Pakistan', shortCode: 'PAK' },
-          date: new Date(),
-          time: '08:00',
-          venue: 'Dubai International Stadium',
-          status: 'Scheduled',
-          round: 'Semi Final',
-          competition: 'ICC T20 World Cup',
-          isActive: true
-        },
-        {
-          fixtureId: 'FIX-404',
-          sport: 'Tennis',
-          league: 'Australian Open',
-          homeTeam: { name: 'Rafael Nadal', shortCode: 'RNA' },
-          awayTeam: { name: 'Daniil Medvedev', shortCode: 'DME' },
-          date: new Date(),
-          time: '14:00',
-          venue: 'Rod Laver Arena',
-          status: 'Scheduled',
-          round: 'Quarter Final',
-          competition: 'Australian Open',
-          isActive: true
-        },
-        {
-          fixtureId: 'FIX-405',
-          sport: 'MMA',
-          league: 'UFC',
-          homeTeam: { name: 'Israel Adesanya', shortCode: 'IAD' },
-          awayTeam: { name: 'Alex Pereira', shortCode: 'APE' },
-          date: new Date(),
-          time: '23:00',
-          venue: 'T-Mobile Arena',
-          status: 'Scheduled',
-          round: 'Main Event',
-          competition: 'UFC 287',
-          isActive: true
-        },
-        {
-          fixtureId: 'FIX-406',
-          sport: 'Football',
-          league: 'Premier League',
-          homeTeam: { name: 'Chelsea', shortCode: 'CHE' },
-          awayTeam: { name: 'Arsenal', shortCode: 'ARS' },
-          date: new Date(),
-          time: '20:00',
-          venue: 'Stamford Bridge',
-          status: 'Scheduled',
-          round: 'Matchweek 15',
-          competition: 'English Premier League',
-          isActive: true
-        },
-        {
-          fixtureId: 'FIX-407',
-          sport: 'Baseball',
-          league: 'MLB',
-          homeTeam: { name: 'NY Yankees', shortCode: 'NYY' },
-          awayTeam: { name: 'Boston Red Sox', shortCode: 'BOS' },
-          date: new Date(),
-          time: '01:05',
-          venue: 'Yankee Stadium',
-          status: 'Scheduled',
-          round: 'Regular Season',
-          competition: 'Major League Baseball',
-          isActive: true
-        },
-        {
-          fixtureId: 'FIX-408',
-          sport: 'Hockey',
-          league: 'NHL',
-          homeTeam: { name: 'Toronto Maple Leafs', shortCode: 'TOR' },
-          awayTeam: { name: 'Montreal Canadiens', shortCode: 'MTL' },
-          date: new Date(),
-          time: '00:00',
-          venue: 'Scotiabank Arena',
-          status: 'Scheduled',
-          round: 'Regular Season',
-          competition: 'National Hockey League',
-          isActive: true
-        },
-        // Upcoming fixtures
-        {
-          fixtureId: 'FIX-409',
-          sport: 'Football',
-          league: 'Premier League',
-          homeTeam: { name: 'Manchester United', shortCode: 'MUN' },
-          awayTeam: { name: 'Liverpool', shortCode: 'LIV' },
-          date: new Date(Date.now() + 86400000),
-          time: '15:00',
-          venue: 'Old Trafford',
-          status: 'Scheduled',
-          round: 'Matchweek 16',
-          competition: 'English Premier League',
-          isFeatured: true,
-          isActive: true
-        },
-        {
-          fixtureId: 'FIX-410',
-          sport: 'Cricket',
-          league: 'IPL',
-          homeTeam: { name: 'Mumbai Indians', shortCode: 'MI' },
-          awayTeam: { name: 'Chennai Super Kings', shortCode: 'CSK' },
-          date: new Date(Date.now() + 86400000),
-          time: '19:30',
-          venue: 'Wankhede Stadium',
-          status: 'Scheduled',
-          round: 'Group Stage',
-          competition: 'Indian Premier League',
-          isActive: true
-        },
-        {
-          fixtureId: 'FIX-411',
-          sport: 'Basketball',
-          league: 'NBA',
-          homeTeam: { name: 'LA Lakers', shortCode: 'LAL' },
-          awayTeam: { name: 'Boston Celtics', shortCode: 'BOS' },
-          date: new Date(Date.now() + 172800000),
-          time: '23:00',
-          venue: 'Staples Center',
-          status: 'Scheduled',
-          round: 'Regular Season',
-          competition: 'National Basketball Association',
-          isActive: true
-        }
-      ];
-
-      // Separate today's fixtures from upcoming
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
+      // Clear existing data
+      this.fixturesData = {
+        today: [],
+        upcoming: [],
+        tournaments: []
+      };
       
-      this.fixturesData.today = sampleData.filter(fixture => {
-        const fixtureDate = new Date(fixture.date);
-        fixtureDate.setHours(0, 0, 0, 0);
-        return fixtureDate.getTime() === today.getTime();
-      });
-
-      this.fixturesData.upcoming = sampleData.filter(fixture => {
-        const fixtureDate = new Date(fixture.date);
-        fixtureDate.setHours(0, 0, 0, 0);
-        return fixtureDate.getTime() > today.getTime();
-      });
-
-      // For tournaments, we'll use sample data
-      this.fixturesData.tournaments = this.getSampleTournaments();
+      // Set loading states
+      this.state.loading.today = true;
+      this.state.loading.upcoming = true;
+      this.state.loading.tournaments = true;
       
-      console.log('✅ Fixtures data loaded:', {
+      // Load today's fixtures
+      await this.loadTodayFixtures();
+      
+      // Load upcoming fixtures
+      await this.loadUpcomingFixtures();
+      
+      // Load tournaments
+      await this.loadTournaments();
+      
+      console.log('✅ All fixtures data loaded:', {
         today: this.fixturesData.today.length,
         upcoming: this.fixturesData.upcoming.length,
         tournaments: this.fixturesData.tournaments.length
       });
       
+      // Clear loading states
+      this.state.loading.today = false;
+      this.state.loading.upcoming = false;
+      this.state.loading.tournaments = false;
+      
+      return true;
+      
     } catch (error) {
       console.error('❌ Error loading fixtures data:', error);
-      // Fallback to minimal sample data
-      this.loadSampleData();
+      
+      // Clear loading states
+      this.state.loading.today = false;
+      this.state.loading.upcoming = false;
+      this.state.loading.tournaments = false;
+      
+      // Fallback to complete sample data
+      this.loadCompleteSampleData();
+      return false;
     }
+  }
+
+  async loadTodayFixtures() {
+    try {
+      console.log('📅 Loading today\'s fixtures...');
+      
+      const response = await fetch('/api/fixtures/today?limit=50');
+      const data = await response.json();
+      
+      if (data.success) {
+        this.fixturesData.today = data.fixtures.map(fixture => this.normalizeFixture(fixture));
+        console.log(`✅ Today's fixtures loaded: ${this.fixturesData.today.length} fixtures`);
+        
+        // Update count display
+        this.updateTodayCount(this.fixturesData.today.length);
+      } else {
+        console.error('Failed to load today fixtures:', data.message);
+        throw new Error(data.message || 'Failed to load today fixtures');
+      }
+    } catch (error) {
+      console.error('Error loading today fixtures:', error);
+      
+      // Fallback: get all fixtures and filter for today
+      try {
+        const allResponse = await fetch('/api/fixtures?limit=200');
+        const allData = await allResponse.json();
+        
+        if (allData.success) {
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+          const tomorrow = new Date(today);
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          
+          this.fixturesData.today = allData.fixtures
+            .map(fixture => this.normalizeFixture(fixture))
+            .filter(fixture => {
+              if (!fixture.date) return false;
+              const fixtureDate = new Date(fixture.date);
+              fixtureDate.setHours(0, 0, 0, 0);
+              return fixtureDate.getTime() === today.getTime();
+            });
+          
+          console.log(`📋 Today fixtures fallback loaded: ${this.fixturesData.today.length} fixtures`);
+          this.updateTodayCount(this.fixturesData.today.length);
+        } else {
+          throw new Error('Failed to load fixtures for fallback');
+        }
+      } catch (fallbackError) {
+        console.error('Today fixtures fallback failed:', fallbackError);
+        
+        // Use sample data
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        
+        const sampleFixtures = getSampleFixtures();
+        this.fixturesData.today = sampleFixtures.filter(fixture => {
+          const fixtureDate = new Date(fixture.date);
+          fixtureDate.setHours(0, 0, 0, 0);
+          return fixtureDate.getTime() === today.getTime();
+        });
+        
+        console.log(`📋 Using sample data for today fixtures: ${this.fixturesData.today.length} fixtures`);
+        this.updateTodayCount(this.fixturesData.today.length);
+      }
+    }
+  }
+
+  async loadUpcomingFixtures() {
+    try {
+      console.log('📅 Loading upcoming fixtures...');
+      
+      const response = await fetch('/api/fixtures/upcoming?limit=100');
+      const data = await response.json();
+      
+      if (data.success) {
+        this.fixturesData.upcoming = data.fixtures.map(fixture => this.normalizeFixture(fixture));
+        console.log(`✅ Upcoming fixtures loaded: ${this.fixturesData.upcoming.length} fixtures`);
+      } else {
+        console.error('Failed to load upcoming fixtures:', data.message);
+        throw new Error(data.message || 'Failed to load upcoming fixtures');
+      }
+    } catch (error) {
+      console.error('Error loading upcoming fixtures:', error);
+      
+      // Fallback: get all fixtures and filter for upcoming
+      try {
+        const allResponse = await fetch('/api/fixtures?limit=300');
+        const allData = await allResponse.json();
+        
+        if (allData.success) {
+          const now = new Date();
+          
+          this.fixturesData.upcoming = allData.fixtures
+            .map(fixture => this.normalizeFixture(fixture))
+            .filter(fixture => {
+              if (!fixture.date) return false;
+              const fixtureDate = new Date(fixture.date);
+              return fixtureDate > now;
+            })
+            .sort((a, b) => new Date(a.date) - new Date(b.date));
+          
+          console.log(`📋 Upcoming fixtures fallback loaded: ${this.fixturesData.upcoming.length} fixtures`);
+        } else {
+          throw new Error('Failed to load fixtures for fallback');
+        }
+      } catch (fallbackError) {
+        console.error('Upcoming fixtures fallback failed:', fallbackError);
+        
+        // Use sample data
+        const now = new Date();
+        const sampleFixtures = getSampleFixtures();
+        this.fixturesData.upcoming = sampleFixtures
+          .filter(fixture => {
+            const fixtureDate = new Date(fixture.date);
+            return fixtureDate > now;
+          })
+          .sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        console.log(`📋 Using sample data for upcoming fixtures: ${this.fixturesData.upcoming.length} fixtures`);
+      }
+    }
+  }
+
+  async loadTournaments() {
+    try {
+      console.log('🏆 Loading tournaments...');
+      
+      const response = await fetch('/api/tournaments?limit=20');
+      const data = await response.json();
+      
+      if (data.success) {
+        this.fixturesData.tournaments = data.tournaments.map(tournament => this.normalizeTournament(tournament));
+        console.log(`✅ Tournaments loaded: ${this.fixturesData.tournaments.length} tournaments`);
+      } else {
+        console.error('Failed to load tournaments:', data.message);
+        throw new Error(data.message || 'Failed to load tournaments');
+      }
+    } catch (error) {
+      console.error('Error loading tournaments:', error);
+      this.fixturesData.tournaments = this.getSampleTournaments();
+      console.log(`📋 Using sample data for tournaments: ${this.fixturesData.tournaments.length} tournaments`);
+    }
+  }
+
+  loadCompleteSampleData() {
+    console.log('📋 Loading complete sample data as fallback...');
+    
+    const now = new Date();
+    const today = new Date(now);
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const dayAfter = new Date(tomorrow);
+    dayAfter.setDate(dayAfter.getDate() + 1);
+    const nextWeek = new Date(today);
+    nextWeek.setDate(nextWeek.getDate() + 7);
+    
+    // Generate comprehensive sample data
+    this.fixturesData.today = this.generateSampleFixturesForDate(today, 8);
+    this.fixturesData.upcoming = [
+      ...this.generateSampleFixturesForDate(tomorrow, 12),
+      ...this.generateSampleFixturesForDate(dayAfter, 10),
+      ...this.generateSampleFixturesForDate(nextWeek, 15)
+    ];
+    this.fixturesData.tournaments = this.getSampleTournaments();
+    
+    // Update counts
+    this.updateTodayCount(this.fixturesData.today.length);
+    
+    console.log('✅ Sample data loaded:', {
+      today: this.fixturesData.today.length,
+      upcoming: this.fixturesData.upcoming.length,
+      tournaments: this.fixturesData.tournaments.length
+    });
+  }
+
+  generateSampleFixturesForDate(date, count) {
+    const fixtures = [];
+    const sports = [
+      { sport: 'Football', leagues: ['Premier League', 'La Liga', 'Champions League', 'Serie A', 'Bundesliga'] },
+      { sport: 'Basketball', leagues: ['NBA', 'EuroLeague', 'WNBA'] },
+      { sport: 'Cricket', leagues: ['IPL', 'Test Series', 'T20 World Cup'] },
+      { sport: 'Tennis', leagues: ['ATP', 'WTA', 'Grand Slam'] },
+      { sport: 'Baseball', leagues: ['MLB'] },
+      { sport: 'Hockey', leagues: ['NHL'] }
+    ];
+    
+    const teams = {
+      'Football': [
+        { home: 'Manchester United', away: 'Liverpool' },
+        { home: 'Barcelona', away: 'Real Madrid' },
+        { home: 'Bayern Munich', away: 'Borussia Dortmund' },
+        { home: 'Paris SG', away: 'Marseille' },
+        { home: 'AC Milan', away: 'Inter Milan' },
+        { home: 'Chelsea', away: 'Arsenal' }
+      ],
+      'Basketball': [
+        { home: 'LA Lakers', away: 'Boston Celtics' },
+        { home: 'Golden State Warriors', away: 'Phoenix Suns' },
+        { home: 'Miami Heat', away: 'Chicago Bulls' },
+        { home: 'Toronto Raptors', away: 'Brooklyn Nets' }
+      ],
+      'Cricket': [
+        { home: 'India', away: 'Australia' },
+        { home: 'England', away: 'Pakistan' },
+        { home: 'South Africa', away: 'New Zealand' },
+        { home: 'West Indies', away: 'Sri Lanka' }
+      ],
+      'Tennis': [
+        { home: 'Novak Djokovic', away: 'Carlos Alcaraz' },
+        { home: 'Rafael Nadal', away: 'Roger Federer' },
+        { home: 'Serena Williams', away: 'Naomi Osaka' }
+      ],
+      'Baseball': [
+        { home: 'New York Yankees', away: 'Boston Red Sox' },
+        { home: 'Los Angeles Dodgers', away: 'San Francisco Giants' }
+      ],
+      'Hockey': [
+        { home: 'Toronto Maple Leafs', away: 'Montreal Canadiens' },
+        { home: 'Chicago Blackhawks', away: 'Detroit Red Wings' }
+      ]
+    };
+    
+    for (let i = 0; i < count; i++) {
+      const sportData = sports[Math.floor(Math.random() * sports.length)];
+      const sportTeams = teams[sportData.sport] || teams['Football'];
+      const teamMatch = sportTeams[Math.floor(Math.random() * sportTeams.length)];
+      const league = sportData.leagues[Math.floor(Math.random() * sportData.leagues.length)];
+      
+      // Generate random time between 10:00 and 22:00
+      const hour = Math.floor(Math.random() * 13) + 10;
+      const minute = Math.random() > 0.5 ? '00' : '30';
+      const time = `${hour.toString().padStart(2, '0')}:${minute}`;
+      
+      // Create fixture date with time
+      const fixtureDate = new Date(date);
+      fixtureDate.setHours(hour, minute === '30' ? 30 : 0, 0, 0);
+      
+      fixtures.push({
+        fixtureId: `SAMPLE_${date.getTime()}_${i}`,
+        sport: sportData.sport,
+        league: league,
+        time: time,
+        homeTeam: { 
+          name: teamMatch.home, 
+          shortCode: teamMatch.home.substring(0, 3).toUpperCase(),
+          logo: teamMatch.home.substring(0, 3).toUpperCase()
+        },
+        awayTeam: { 
+          name: teamMatch.away, 
+          shortCode: teamMatch.away.substring(0, 3).toUpperCase(),
+          logo: teamMatch.away.substring(0, 3).toUpperCase()
+        },
+        date: fixtureDate,
+        venue: `${teamMatch.home} Stadium`,
+        status: 'Scheduled',
+        round: 'Regular Season',
+        competition: league,
+        isFeatured: i < 3, // First 3 are featured
+        isActive: true
+      });
+    }
+    
+    return fixtures;
+  }
+
+  normalizeFixture(fixture) {
+    // Handle different data structures from server vs sample data
+    const homeTeamName = fixture.homeTeam?.name || fixture.teams?.home || 'Home Team';
+    const awayTeamName = fixture.awayTeam?.name || fixture.teams?.away || 'Away Team';
+    
+    // Generate short codes if not present
+    const homeTeamShortCode = fixture.homeTeam?.shortCode || 
+                             fixture.homeTeam?.logo || 
+                             homeTeamName.substring(0, 3).toUpperCase();
+    
+    const awayTeamShortCode = fixture.awayTeam?.shortCode || 
+                             fixture.awayTeam?.logo || 
+                             awayTeamName.substring(0, 3).toUpperCase();
+    
+    // Ensure date is a Date object
+    let fixtureDate;
+    if (fixture.date instanceof Date) {
+      fixtureDate = fixture.date;
+    } else if (fixture.date) {
+      fixtureDate = new Date(fixture.date);
+    } else {
+      // Default to today if no date
+      fixtureDate = new Date();
+    }
+    
+    // Ensure time is in correct format
+    let fixtureTime = fixture.time || '12:00';
+    if (fixtureTime.length === 4) {
+      // Convert "930" to "09:30"
+      fixtureTime = fixtureTime.padStart(4, '0');
+      fixtureTime = `${fixtureTime.substring(0, 2)}:${fixtureTime.substring(2)}`;
+    }
+    
+    return {
+      fixtureId: fixture.fixtureId || fixture._id || `FIX-${Math.floor(Math.random() * 10000)}`,
+      sport: fixture.sport || 'Football',
+      league: fixture.league || 'Unknown League',
+      homeTeam: {
+        name: homeTeamName,
+        shortCode: homeTeamShortCode,
+        logo: homeTeamShortCode
+      },
+      awayTeam: {
+        name: awayTeamName,
+        shortCode: awayTeamShortCode,
+        logo: awayTeamShortCode
+      },
+      date: fixtureDate,
+      time: fixtureTime,
+      venue: fixture.venue || 'Unknown Venue',
+      status: fixture.status || 'Scheduled',
+      round: fixture.round || 'Regular Season',
+      competition: fixture.competition || fixture.league || 'Unknown Competition',
+      isFeatured: fixture.isFeatured || false,
+      isActive: fixture.isActive !== undefined ? fixture.isActive : true
+    };
+  }
+
+  normalizeTournament(tournament) {
+    return {
+      id: tournament.tournamentId || tournament._id || tournament.id,
+      name: tournament.name || 'Unknown Tournament',
+      sport: tournament.sport || 'General',
+      status: tournament.status || 'upcoming',
+      startDate: this.formatDate(tournament.startDate),
+      endDate: this.formatDate(tournament.endDate),
+      teams: tournament.teams || 0,
+      location: tournament.location || 'Unknown Location',
+      description: tournament.description || '',
+      prizeMoney: tournament.prizeMoney || 'TBD'
+    };
+  }
+
+  formatDate(date) {
+    if (!date) return 'TBD';
+    const dateObj = new Date(date);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return dateObj.toLocaleDateString('en-US', options);
+  }
+
+  loadSampleData() {
+    console.log('📋 Loading minimal sample data as fallback...');
+    
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const dayAfter = new Date(tomorrow);
+    dayAfter.setDate(dayAfter.getDate() + 1);
+    
+
+    
+    this.fixturesData.upcoming = [
+      {
+        fixtureId: '409',
+        sport: 'Football',
+        league: 'Premier League',
+        time: '15:00',
+        homeTeam: { name: 'Manchester United', shortCode: 'MUN' },
+        awayTeam: { name: 'Liverpool', shortCode: 'LIV' },
+        venue: 'Old Trafford',
+        date: tomorrow,
+        status: 'Scheduled',
+        round: 'Regular Season',
+        competition: 'Premier League',
+        isActive: true
+      },
+      {
+        fixtureId: '410',
+        sport: 'Football',
+        league: 'La Liga',
+        time: '20:00',
+        homeTeam: { name: 'Barcelona', shortCode: 'FCB' },
+        awayTeam: { name: 'Real Madrid', shortCode: 'RMA' },
+        venue: 'Camp Nou',
+        date: tomorrow,
+        status: 'Scheduled',
+        round: 'Regular Season',
+        competition: 'La Liga',
+        isActive: true
+      },
+      {
+        fixtureId: '411',
+        sport: 'Basketball',
+        league: 'NBA',
+        time: '23:00',
+        homeTeam: { name: 'LA Lakers', shortCode: 'LAL' },
+        awayTeam: { name: 'Boston Celtics', shortCode: 'BOS' },
+        venue: 'Staples Center',
+        date: dayAfter,
+        status: 'Scheduled',
+        round: 'Regular Season',
+        competition: 'National Basketball Association',
+        isActive: true
+      }
+    ];
+    
+    this.fixturesData.tournaments = this.getSampleTournaments();
   }
 
   getSampleTournaments() {
@@ -1653,69 +1903,7 @@ class FixturesApp {
         teams: 16,
         location: 'USA & Canada'
       },
-      {
-        id: 504,
-        name: 'Wimbledon',
-        sport: 'Tennis',
-        status: 'upcoming',
-        startDate: 'July 1, 2024',
-        endDate: 'July 14, 2024',
-        teams: 128,
-        location: 'London, UK'
-      },
-      {
-        id: 505,
-        name: 'Summer Olympics',
-        sport: 'Olympics',
-        status: 'upcoming',
-        startDate: 'July 26, 2024',
-        endDate: 'August 11, 2024',
-        teams: 206,
-        location: 'Paris, France'
-      },
-      {
-        id: 506,
-        name: 'UFC 300',
-        sport: 'MMA',
-        status: 'upcoming',
-        startDate: 'April 13, 2024',
-        endDate: 'April 13, 2024',
-        teams: 24,
-        location: 'Las Vegas, USA'
-      }
     ];
-  }
-
-  loadSampleData() {
-    console.log('📋 Loading minimal sample data as fallback...');
-    // Minimal sample data as backup
-    this.fixturesData.today = [
-      {
-        fixtureId: '401',
-        sport: 'Football',
-        league: 'Champions League',
-        time: '19:45',
-        homeTeam: { name: 'Bayern Munich', shortCode: 'BAY' },
-        awayTeam: { name: 'Paris SG', shortCode: 'PSG' },
-        venue: 'Allianz Arena',
-        date: new Date()
-      }
-    ];
-    
-    this.fixturesData.upcoming = [
-      {
-        fixtureId: '409',
-        sport: 'Football',
-        league: 'Premier League',
-        time: '15:00',
-        homeTeam: { name: 'Manchester United', shortCode: 'MUN' },
-        awayTeam: { name: 'Liverpool', shortCode: 'LIV' },
-        venue: 'Old Trafford',
-        date: new Date(Date.now() + 86400000)
-      }
-    ];
-    
-    this.fixturesData.tournaments = this.getSampleTournaments();
   }
 
   // Update the search setup to use sample data
@@ -1869,34 +2057,67 @@ class FixturesApp {
 
   async checkAuthStatus() {
     try {
-      // For demo purposes, check localStorage
+      const response = await fetch('/api/user');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.user) {
+          this.state.user = data.user;
+          this.updateAuthUI();
+          console.log('User authenticated:', this.state.user.username);
+        } else {
+          console.log('User not authenticated');
+          this.state.user = null;
+          this.updateAuthUI();
+        }
+      } else {
+        // Fallback to localStorage for demo purposes
+        const userData = localStorage.getItem('allsports_user');
+        if (userData) {
+          this.state.user = JSON.parse(userData);
+          this.updateAuthUI();
+          console.log('User authenticated (localStorage):', this.state.user.username);
+        } else {
+          console.log('User not authenticated');
+          this.state.user = null;
+          this.updateAuthUI();
+        }
+      }
+    } catch (error) {
+      console.error('Error checking auth status:', error);
+      // Fallback to localStorage for demo purposes
       const userData = localStorage.getItem('allsports_user');
       if (userData) {
         this.state.user = JSON.parse(userData);
         this.updateAuthUI();
-        console.log('User authenticated (localStorage):', this.state.user.username);
+        console.log('User authenticated (localStorage fallback):', this.state.user.username);
       } else {
-        console.log('User not authenticated');
         this.state.user = null;
         this.updateAuthUI();
       }
-    } catch (error) {
-      console.error('Error checking auth status:', error);
-      this.state.user = null;
-      this.updateAuthUI();
     }
   }
 
   async loadRemindedMatches() {
     try {
-      // Fallback to localStorage
-      const remindedMatches = localStorage.getItem('allsports_reminded_matches');
-      if (remindedMatches) {
-        const matchIds = JSON.parse(remindedMatches);
-        this.state.remindedMatches = new Set(matchIds);
-        console.log('Loaded reminded matches from localStorage:', matchIds);
+      // Try API first, then fallback to localStorage
+      const response = await fetch('/api/user/reminded-matches');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          const matchIds = data.remindedMatches.map(match => match.matchId);
+          this.state.remindedMatches = new Set(matchIds);
+          console.log('Loaded reminded matches from API:', matchIds);
+        }
       } else {
-        console.log('No reminded matches found');
+        // Fallback to localStorage
+        const remindedMatches = localStorage.getItem('allsports_reminded_matches');
+        if (remindedMatches) {
+          const matchIds = JSON.parse(remindedMatches);
+          this.state.remindedMatches = new Set(matchIds);
+          console.log('Loaded reminded matches from localStorage:', matchIds);
+        } else {
+          console.log('No reminded matches found');
+        }
       }
     } catch (error) {
       console.error('Error loading reminded matches:', error);
@@ -1911,14 +2132,25 @@ class FixturesApp {
 
   async loadRemindedTournaments() {
     try {
-      // Fallback to localStorage
-      const remindedTournaments = localStorage.getItem('allsports_reminded_tournaments');
-      if (remindedTournaments) {
-        const tournamentIds = JSON.parse(remindedTournaments);
-        this.state.remindedTournaments = new Set(tournamentIds);
-        console.log('Loaded reminded tournaments from localStorage:', tournamentIds);
+      // Try API first, then fallback to localStorage
+      const response = await fetch('/api/user/reminded-tournaments');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          const tournamentIds = data.remindedTournaments.map(tournament => tournament.tournamentId);
+          this.state.remindedTournaments = new Set(tournamentIds);
+          console.log('Loaded reminded tournaments from API:', tournamentIds);
+        }
       } else {
-        console.log('No reminded tournaments found');
+        // Fallback to localStorage
+        const remindedTournaments = localStorage.getItem('allsports_reminded_tournaments');
+        if (remindedTournaments) {
+          const tournamentIds = JSON.parse(remindedTournaments);
+          this.state.remindedTournaments = new Set(tournamentIds);
+          console.log('Loaded reminded tournaments from localStorage:', tournamentIds);
+        } else {
+          console.log('No reminded tournaments found');
+        }
       }
     } catch (error) {
       console.error('Error loading reminded tournaments:', error);
@@ -2009,17 +2241,50 @@ class FixturesApp {
     });
 
     try {
-        // For demo, use localStorage
-        if (action === 'add') {
-            this.state.remindedMatches.add(matchId);
-            localStorage.setItem('allsports_reminded_matches', JSON.stringify([...this.state.remindedMatches]));
-            this.showToast('Reminder set successfully! You will be notified before the match starts.');
-        } else {
-            this.state.remindedMatches.delete(matchId);
-            localStorage.setItem('allsports_reminded_matches', JSON.stringify([...this.state.remindedMatches]));
-            this.showToast('Reminder removed successfully');
+        const response = await fetch('/api/user/set-reminder', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                matchId: matchId,
+                homeTeam: matchData.homeTeam?.name || matchData.homeTeam,
+                awayTeam: matchData.awayTeam?.name || matchData.awayTeam,
+                sport: matchData.sport,
+                league: matchData.league,
+                venue: matchData.venue,
+                time: matchData.date,
+                action
+            })
+        });
+
+        // Check if response is OK
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
         }
-        this.updateReminderButtons();
+
+        const result = await response.json();
+        console.log('Server response:', result);
+
+        if (result.success) {
+            // Update local state based on the action that was actually performed
+            if (result.action === 'reminder_set') {
+                this.state.remindedMatches.add(matchId);
+                this.showToast('Reminder set successfully! You will be notified before the match starts.');
+            } else if (result.action === 'reminder_removed') {
+                this.state.remindedMatches.delete(matchId);
+                this.showToast('Reminder removed successfully');
+            }
+
+            // Update UI
+            this.updateReminderButtons();
+            
+            console.log(`Match ${matchId} reminder ${result.action} successfully`);
+        } else {
+            this.showToast(result.message || 'Error updating reminder status');
+        }
     } catch (error) {
         console.error('Error toggling reminder:', error);
         // Fallback to localStorage for demo
@@ -2057,17 +2322,48 @@ class FixturesApp {
     });
 
     try {
-        // For demo, use localStorage
-        if (action === 'add') {
-            this.state.remindedTournaments.add(tournamentId);
-            localStorage.setItem('allsports_reminded_tournaments', JSON.stringify([...this.state.remindedTournaments]));
-            this.showToast(`You're now following ${tournamentData.name}!`);
-        } else {
-            this.state.remindedTournaments.delete(tournamentId);
-            localStorage.setItem('allsports_reminded_tournaments', JSON.stringify([...this.state.remindedTournaments]));
-            this.showToast(`You've unfollowed ${tournamentData.name}`);
+        const response = await fetch('/api/user/set-tournament-reminder', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                tournamentId: tournamentId,
+                tournamentName: tournamentData.name,
+                sport: tournamentData.sport,
+                startDate: tournamentData.startDate,
+                endDate: tournamentData.endDate,
+                action
+            })
+        });
+
+        // Check if response is OK
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
         }
-        this.updateTournamentButtons();
+
+        const result = await response.json();
+        console.log('Server response:', result);
+
+        if (result.success) {
+            // Update local state based on the action that was actually performed
+            if (result.action === 'reminder_set') {
+                this.state.remindedTournaments.add(tournamentId);
+                this.showToast(`You're now following ${tournamentData.name}!`);
+            } else if (result.action === 'reminder_removed') {
+                this.state.remindedTournaments.delete(tournamentId);
+                this.showToast(`You've unfollowed ${tournamentData.name}`);
+            }
+
+            // Update UI
+            this.updateTournamentButtons();
+            
+            console.log(`Tournament ${tournamentId} reminder ${result.action} successfully`);
+        } else {
+            this.showToast(result.message || 'Error updating tournament reminder status');
+        }
     } catch (error) {
         console.error('Error toggling tournament reminder:', error);
         // Fallback to localStorage for demo
@@ -2083,7 +2379,7 @@ class FixturesApp {
         this.updateTournamentButtons();
     }
   }
-
+  
   setupEventListeners() {
     // Date navigation
     const prevDateBtn = document.getElementById('prevDateBtn');
@@ -2267,30 +2563,32 @@ class FixturesApp {
 
   async handleLogout() {
     try {
-      // For demo, clear localStorage
-      localStorage.removeItem('allsports_user');
-      localStorage.removeItem('allsports_reminded_matches');
-      localStorage.removeItem('allsports_reminded_tournaments');
-      this.state.user = null;
-      this.state.remindedMatches = new Set();
-      this.state.remindedTournaments = new Set();
-      this.updateAuthUI();
-      this.updateReminderButtons();
-      this.updateTournamentButtons();
-      this.showToast('You have been logged out');
+      const response = await fetch('/api/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        this.state.user = null;
+        this.state.followedPlayers = new Set();
+        this.updateAuthUI();
+        this.updateReminderButtons();
+        this.updateTournamentButtons();
+        this.showToast('Successfully logged out');
+        
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      } else {
+        this.showToast('Error during logout');
+      }
     } catch (error) {
       console.error('Error during logout:', error);
-      // Fallback to localStorage clearing
-      localStorage.removeItem('allsports_user');
-      localStorage.removeItem('allsports_reminded_matches');
-      localStorage.removeItem('allsports_reminded_tournaments');
-      this.state.user = null;
-      this.state.remindedMatches = new Set();
-      this.state.remindedTournaments = new Set();
-      this.updateAuthUI();
-      this.updateReminderButtons();
-      this.updateTournamentButtons();
-      this.showToast('You have been logged out');
+      this.showToast('Error during logout');
     }
   }
 
@@ -2385,9 +2683,17 @@ class FixturesApp {
     todayFixturesContainer.innerHTML = html;
     
     // Update count
+    this.updateTodayCount(this.fixturesData.today.length);
+  }
+
+  updateTodayCount(count) {
     const todayCount = document.getElementById('todayCount');
     if (todayCount) {
-      todayCount.textContent = `${this.fixturesData.today.length} matches today`;
+      if (count === 0) {
+        todayCount.textContent = 'No matches today';
+      } else {
+        todayCount.textContent = `${count} ${count === 1 ? 'match' : 'matches'} today`;
+      }
     }
   }
 
@@ -2673,9 +2979,9 @@ class FixturesApp {
     
     matchCards.forEach(card => {
       const sport = card.dataset.sport;
-      const league = card.querySelector('.match-competition').textContent.split('•')[0].trim();
-      const time = card.querySelector('.match-status').textContent;
-      const hour = parseInt(time.split(':')[0]);
+      const league = card.querySelector('.match-competition')?.textContent?.split('•')[0]?.trim() || '';
+      const time = card.querySelector('.match-status')?.textContent || '';
+      const hour = parseInt(time.split(':')[0]) || 0;
       
       let show = true;
       
@@ -2709,7 +3015,7 @@ class FixturesApp {
     
     // Also filter tournaments by sport
     tournamentCards.forEach(card => {
-      const sport = card.querySelector('.tournament-sport span:nth-child(2)').textContent;
+      const sport = card.querySelector('.tournament-sport span:nth-child(2)')?.textContent || '';
       
       let show = true;
       
@@ -2740,13 +3046,6 @@ class FixturesApp {
     if (timeFilter) timeFilter.value = 'All';
     
     this.filterFixtures();
-  }
-
-  updateTodayCount(count) {
-    const todayCount = document.getElementById('todayCount');
-    if (todayCount) {
-      todayCount.textContent = `${count} matches today`;
-    }
   }
 
   showMatchDetails(matchId) {

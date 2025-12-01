@@ -1,11 +1,13 @@
 const videosData = [
   // Football Videos
   {
-    videoId: 'FOOTBALL_QUBCI2BVM2c',
+    
+    videoId: 'F1',
+    youtubeId: 'om2_9DvCdAA',
     title: 'Manchester City 3-1 Arsenal: Extended Highlights',
     description: 'Extended highlights from the crucial Premier League encounter',
     duration: '8:45',
-    category: 'Highlights',
+    category: ['Highlights ', 'football'],
     sport: 'Football',
     type: 'video',
     thumbnail: 'https://i.pinimg.com/736x/14/31/56/143156d98ce3004bbd0d18ab9d0ee1a1.jpg',
@@ -14,11 +16,12 @@ const videosData = [
     isActive: true
   },
   {
-    videoId: 'FOOTBALL_mQmquwO3QkI',
+    videoId: 'F2',
+    youtubeId:'Rq-XaBvxkI',
     title: 'Haaland: "We\'re focused on the title race"',
     description: 'Exclusive interview with Erling Haaland about the title race',
     duration: '5:20',
-    category: 'Interview',
+    category: ['Interview' , 'football'],
     sport: 'Football',
     type: 'video',
     thumbnail: 'https://i.pinimg.com/736x/02/12/58/021258c035d77f92b2f873fafab2f097.jpg',
@@ -26,37 +29,40 @@ const videosData = [
     isActive: true
   },
   {
-    videoId: 'FOOTBALL_oBqQCfgM1Jc',
+    videoId: 'F3',
+    youtubeId:'_PwpdV82F3A',
     title: 'Pep Guardiola: Tactical Masterclass',
     description: 'Analyzing Pep Guardiola\'s revolutionary tactics at Manchester City',
     duration: '12:30',
-    category: 'Analysis',
+    category: ['Analysis', 'football'],
     sport: 'Football',
     type: 'video',
-    thumbnail: 'https://i.pinimg.com/736x/95/c3/81/95c3815b8907724df588110224d2aff0.jpg',
+    thumbnail: 'https://i.pinimg.com/736x/6c/1b/14/6c1b143a9c84a78c3dd2752b5ca638ec.jpg',
     tags: ['Premier League', 'Manchester City', 'Tactics', 'Guardiola'],
     isActive: true
   },
   {
-    videoId: 'FOOTBALL_fxTZituJUaY',
+    videoId: 'F4',
+    youtubeId:'gMSjc0NO_QA',
     title: 'Premier League Top 10 Goals - Matchweek 28',
     description: 'Incredible strikes from the latest Premier League action',
     duration: '9:15',
-    category: 'Highlights',
+    category: ['Highlights ', 'football'],
     sport: 'Football',
     type: 'video',
-    thumbnail: 'https://i.pinimg.com/736x/4e/05/ba/4e05baa52f89b44efda2c702c12fddd2.jpg',
+    thumbnail: 'https://i.pinimg.com/736x/cf/5f/9a/cf5f9a1ba5080c29a58e6a6e3fbe9986.jpg',
     tags: ['Premier League', 'Goals', 'Highlights', 'Top 10'],
     isActive: true
   },
 
   // Basketball Videos
   {
-    videoId: 'BASKETBALL_zDh1hCdxSd8',
+    videoId: 'BA1',
+    youtubeId:'zDh1hCdxSd8',
     title: 'Celtics vs Lakers: Game 7 Full Highlights',
     description: 'Complete highlights from the thrilling Game 7 of the NBA Finals',
     duration: '12:45',
-    category: 'Highlights',
+    category: ['Highlights ', 'basketball'],
     sport: 'Basketball',
     type: 'video',
     thumbnail: 'https://i.pinimg.com/1200x/7f/99/b9/7f99b9e379872f897914fc8ecf7166f4.jpg',
@@ -65,11 +71,12 @@ const videosData = [
     isActive: true
   },
   {
-    videoId: 'BASKETBALL_Mi5C9Wf5-d4',
+    videoId: 'BA2',
+    youtubeId:'Mi5C9Wf5-d4',
     title: 'Tatum\'s 45-point masterpiece in Game 7',
     description: 'Jayson Tatum\'s incredible 45-point performance in the decisive Game 7',
     duration: '8:30',
-    category: 'Highlights',
+    category: ['Highlights ', 'basketball'],
     sport: 'Basketball',
     type: 'video',
     thumbnail: 'https://i.pinimg.com/1200x/c9/ff/a2/c9ffa26fca83bcdd69e4a56fd1d2a26a.jpg',
@@ -77,11 +84,12 @@ const videosData = [
     isActive: true
   },
   {
-    videoId: 'BASKETBALL_4VCVhvbz7Kk',
+    videoId: 'BA3',
+    youtubeId:'4VCVhvbz7Kk',
     title: 'Celtics dynasty: Building a championship team',
     description: 'How the Boston Celtics built their championship-winning roster',
     duration: '15:20',
-    category: 'Feature',
+    category: ['Feature', 'basketball'],
     sport: 'Basketball',
     type: 'video',
     thumbnail: 'https://i.pinimg.com/736x/e4/53/32/e45332ce775a3e7d83180b3c9dd85deb.jpg',
@@ -89,11 +97,12 @@ const videosData = [
     isActive: true
   },
   {
-    videoId: 'BASKETBALL__etnaBDQmbs',
+    videoId: 'BA4',
+    youtubeId:'m45vka5MQ_k',
     title: 'Breaking down the Lakers\' defensive schemes',
     description: 'Detailed analysis of the Los Angeles Lakers\' defensive strategies',
     duration: '11:15',
-    category: 'Analysis',
+    category: ['Analysis', 'basketball'],
     sport: 'Basketball',
     type: 'video',
     thumbnail: 'https://i.pinimg.com/1200x/3b/f5/fc/3bf5fc50c9a64f26bf462517db66b34d.jpg',
@@ -103,24 +112,26 @@ const videosData = [
 
   // Baseball Videos
   {
-    videoId: 'BASEBALL_QUBCI2BVM2c',
+    videoId: 'BAS1',
+    youtubeId:'QUBCI2BVM2c',
     title: 'Yankees vs Red Sox: Game Highlights',
     description: 'Full game highlights from the Yankees vs Red Sox rivalry game',
     duration: '8:45',
-    category: 'Highlights',
+    category: ['Highlights', 'baseball'],
     sport: 'Baseball',
     type: 'video',
-    thumbnail: 'https://i.pinimg.com/736x/b5/66/f6/b566f6401e0210169de04734996b1243.jpg',
+    thumbnail: 'https://i.pinimg.com/736x/d8/30/61/d83061c05799c7da5c001641a1536ad9.jpg',
     featured: true,
     tags: ['MLB', 'Yankees', 'Red Sox', 'Highlights'],
     isActive: true
   },
   {
-    videoId: 'BASEBALL_mQmquwO3QkI',
+    videoId: 'BAS2',
+    youtubeId:'deU5BK9SpRY',
     title: 'Judge\'s walk-off home run in the 9th',
     description: 'Aaron Judge\'s incredible walk-off home run to win the game',
     duration: '5:20',
-    category: 'Highlights',
+    category: ['Highlights', 'baseball'],
     sport: 'Baseball',
     type: 'video',
     thumbnail: 'https://i.pinimg.com/1200x/a4/3d/67/a43d67d09741fad533578b25d97b8c52.jpg',
@@ -128,11 +139,12 @@ const videosData = [
     isActive: true
   },
   {
-    videoId: 'BASEBALL_oBqQCfgM1Jc',
+    videoId: 'BAS3',
+    youtubeId:'oBqQCfgM1Jc',
     title: 'Aaron Judge: The captain\'s leadership',
     description: 'In-depth feature on Aaron Judge\'s leadership role with the Yankees',
     duration: '12:30',
-    category: 'Feature',
+    category: ['Feature', 'baseball'],
     sport: 'Baseball',
     type: 'video',
     thumbnail: 'https://i.pinimg.com/1200x/95/c3/81/95c3815b8907724df588110224d2aff0.jpg',
@@ -140,11 +152,12 @@ const videosData = [
     isActive: true
   },
   {
-    videoId: 'BASEBALL_fxTZituJUaY',
+    videoId: 'BAS4',
+    youtubeId:'fxTZituJUaY',
     title: 'Cole\'s dominant pitching performance analyzed',
     description: 'Breaking down Gerrit Cole\'s masterful pitching performance',
     duration: '9:15',
-    category: 'Analysis',
+    category: [']Analysis', 'baseball'],
     sport: 'Baseball',
     type: 'video',
     thumbnail: 'https://i.pinimg.com/736x/4e/05/ba/4e05baa52f89b44efda2c702c12fddd2.jpg',
@@ -154,14 +167,15 @@ const videosData = [
 
   // Cricket Videos
   {
-    videoId: 'CRICKET_ABC123DEF45',
+    videoId: 'C1',
     title: 'India vs Australia: T20 World Cup Final Highlights',
     description: 'Thrilling final match of the T20 World Cup with incredible performances',
+    youtubeId: 'R2rYf7Y7VXI',
     duration: '10:30',
-    category: 'Highlights',
+    category: ['Highlights', 'cricket'],
     sport: 'Cricket',
     type: 'video',
-    thumbnail: 'https://i.pinimg.com/736x/14/31/56/143156d98ce3004bbd0d18ab9d0ee1a1.jpg',
+    thumbnail: 'https://i.pinimg.com/736x/06/e8/2d/06e82d79a909496b05a312b428f21a1d.jpg',
     featured: true,
     tags: ['Cricket', 'T20 World Cup', 'India', 'Australia'],
     isActive: true
@@ -169,14 +183,15 @@ const videosData = [
 
   // Tennis Videos
   {
-    videoId: 'TENNIS_XYZ789UVW01',
+    videoId: 'T1',
+    youtubeId:'64WsO9LKE-A',
     title: 'Wimbledon Finals: Djokovic vs Alcaraz Epic Battle',
     description: 'Incredible five-set thriller at the Wimbledon Championships',
     duration: '15:20',
-    category: 'Highlights',
-    sport: 'Tennis',
+    category: ['Highlights', 'tennis'],
+    sport: 'tennis',
     type: 'video',
-    thumbnail: 'https://i.pinimg.com/736x/02/12/58/021258c035d77f92b2f873fafab2f097.jpg',
+    thumbnail: 'https://i.pinimg.com/1200x/84/fd/45/84fd45fd4c65d6b6a1874366b55a9b70.jpg',
     featured: true,
     tags: ['Tennis', 'Wimbledon', 'Djokovic', 'Alcaraz'],
     isActive: true
@@ -187,7 +202,7 @@ const videosData = [
     videoId: 'ls1',
     title: 'Premier League: Arsenal vs Tottenham - LIVE',
     thumbnail: 'https://i.pinimg.com/736x/7f/dd/e6/7fdde67690adbf0311849ac00f214733.jpg',
-    youtubeId: '7JCD30o01Ak',
+    youtubeId: 'sRBQpghDdXs',
     viewers: '245K',
     publishedAt: 'Live now',
     category: 'football',
@@ -196,7 +211,7 @@ const videosData = [
     description: 'Watch the North London Derby live from Emirates Stadium',
     type: 'live',
     status: 'live',
-    views: '0'
+    views: '100k'
   },
   {
     videoId: 'ls2',
@@ -318,6 +333,7 @@ const videosData = [
     description: 'An epic Wimbledon final between two tennis giants',
     type: 'video'
   },
+  
   {
     videoId: 'v5',
     title: 'Tactical Analysis: How Man City Dominated the Premier League',
@@ -373,6 +389,565 @@ const videosData = [
     sport: 'cricket',
     description: 'Technical analysis of Virat Kohli\'s century innings',
     type: 'video'
+  },
+   // Football Videos (Additional)
+  {
+    videoId: 'F10',
+    youtubeId:'MM_PM7BPcSU',
+    title: 'Real Madrid vs Barcelona: El Clásico Highlights',
+    description: 'The classic rivalry with incredible moments and goals',
+    duration: '10:15',
+    category: ['Highlights' ,'football'],
+    sport: 'Football',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/1200x/40/08/23/4008231cd99843a2970085a5605e1fbc.jpg',
+    featured: true,
+    tags: ['La Liga', 'El Clásico', 'Real Madrid', 'Barcelona'],
+    isActive: true
+  },
+  {
+    videoId: 'F11',
+    youtubeId:'-e0oBZR-szo',
+    title: 'Champions League Final: Complete Recap',
+    description: 'Full highlights from the Champions League final',
+    duration: '15:30',
+    category: ['Highlights', 'football'],
+    sport: 'Football',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/1200x/94/e5/26/94e526d5867ec537391441c6eff083bb.jpg',
+    tags: ['Champions League', 'Final', 'European Football'],
+    isActive: true
+  },
+
+  // Basketball Videos (Additional)
+  {
+    videoId: 'BA10',
+    youtubeId:'rSUzn04z5lY',
+    title: 'NBA All-Star Weekend: Dunk Contest Highlights',
+    description: 'Incredible dunks from the NBA All-Star weekend',
+    duration: '12:45',
+    category: ['Highlights', 'basketball'],
+    sport: 'Basketball',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/20/1c/d4/201cd438e203dd381d881b8617d071ba.jpg',
+    featured: true,
+    tags: ['NBA', 'All-Star', 'Dunk Contest', 'Highlights'],
+    isActive: true
+  },
+  {
+    videoId: 'BA11',
+    youtubeId:'sWFKJevEkAU',
+    title: 'Stephen Curry: Beyond the Arc Masterclass',
+    description: 'Analyzing Stephen Curry\'s three-point shooting technique',
+    duration: '18:20',
+    category: ['Analysis' ,'basketball'],
+    sport: 'Basketball',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/08/7c/59/087c59dc4319746461ccbf2ad2de88bd.jpg',
+    tags: ['NBA', 'Stephen Curry', 'Three-Point', 'Analysis'],
+    isActive: true
+  },
+
+  // Baseball Videos (Additional)
+  {
+    videoId: 'BAS10',
+    youtubeId:'Pb2bEiVpsWc',
+    title: 'World Series Game 7: Epic Finale',
+    description: 'The dramatic conclusion to the World Series',
+    duration: '14:25',
+    category: ['Highlights', 'baseball'],
+    sport: 'Baseball',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/de/b4/5b/deb45b64c620e7bb0dd9dec31938b0b5.jpg',
+    featured: true,
+    tags: ['MLB', 'World Series', 'Game 7', 'Highlights'],
+    isActive: true
+  },
+
+  // Cricket Videos (Additional)
+  {
+    videoId: 'C10',
+    youtubeId:'qVb4irhX9Cw',
+    title: 'The Ashes: England vs Australia Test Match Day 5',
+    description: 'Thrilling final day of the Ashes Test match',
+    duration: '22:15',
+    category: ['Highlights', 'cricket'],
+    sport: 'Cricket',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/1200x/e0/76/6b/e0766b589c6f1e404dee8544a7f889ce.jpg',
+    featured: true,
+    tags: ['Cricket', 'The Ashes', 'Test Match', 'England', 'Australia'],
+    isActive: true
+  },
+  {
+    videoId: 'C11',
+    youtubeId:'tdC2whKyvas',
+    title: 'IPL Final: Mumbai Indians vs Chennai Super Kings',
+    description: 'Electric final of the Indian Premier League',
+    duration: '16:40',
+    category: ['Highlights', 'cricket'],
+    sport: 'Cricket',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/00/bf/c2/00bfc216dc1d3898011ebec63b74ede9.jpg',
+    tags: ['Cricket', 'IPL', 'T20', 'Mumbai Indians', 'CSK'],
+    isActive: true
+  },
+
+  // Golf Videos
+  {
+    videoId: 'G1',
+    youtubeId:'Jn9auU-6JtQ',
+    title: 'The Masters: Final Round Highlights',
+    description: 'Dramatic final round at Augusta National',
+    duration: '20:30',
+    category: ['Highlights', 'golf'],
+    sport: 'Golf',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/1200x/38/f5/60/38f560ec46c94fc1b2a1ea214684f4f7.jpg',
+    featured: true,
+    tags: ['Golf', 'The Masters', 'Augusta', 'PGA Tour'],
+    isActive: true
+  },
+  {
+    videoId: 'G2',
+    youtubeId:'n57KPiutUDA',
+    title: 'Tiger Woods: Career Defining Moments',
+    description: 'The most memorable moments from Tiger Woods career',
+    duration: '25:15',
+    category: ['Feature', 'golf'],
+    sport: 'Golf',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/87/1c/9d/871c9d35e099775da4e45b0bf93eab23.jpg',
+    tags: ['Golf', 'Tiger Woods', 'PGA', 'Career Highlights'],
+    isActive: true
+  },
+  {
+    videoId: 'G3',
+    youtubeId:'LUKsbDYEnd4',
+    title: 'US Open: Unforgettable Shots and Moments',
+    description: 'Incredible shots from the US Open championship',
+    duration: '18:45',
+    category: ['Highlights', 'golf'],
+    sport: 'Golf',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/ed/2b/bf/ed2bbfc85847f8926ab852071b3d2c7d.jpg',
+    tags: ['Golf', 'US Open', 'Championship', 'Highlights'],
+    isActive: true
+  },
+
+  // Boxing Videos
+  {
+    videoId: 'BO1',
+    youtubeId:'018pJG3hB_Y',
+    title: 'Heavyweight Championship: Full Fight Highlights',
+    description: 'The complete heavyweight title fight highlights',
+    duration: '28:30',
+    category: ['Highlights', 'boxing'],
+    sport: 'Boxing',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/1200x/9e/d2/80/9ed28029fea7fa1f976dcf2669e17a8a.jpg',
+    featured: true,
+    tags: ['Boxing', 'Heavyweight', 'Championship', 'Fight'],
+    isActive: true
+  },
+  {
+    videoId: 'BO2',
+    youtubeId:'Mz1c2Iyi7Og',
+    title: 'Mike Tyson: Knockout Compilation',
+    description: 'The most devastating knockouts from Iron Mike',
+    duration: '15:20',
+    category: ['Highlights', 'boxing'],
+    sport: 'Boxing',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/e1/d2/6f/e1d26fb0f7fec5fe62e2d7398d12973e.jpg',
+    tags: ['Boxing', 'Mike Tyson', 'Knockouts', 'Compilation'],
+    isActive: true
+  },
+  {
+    videoId: 'BO3',
+    youtubeId:'zkOim_88UZA',
+    title: 'Boxing Technique: Defensive Masterclass',
+    description: 'Breaking down defensive techniques in boxing',
+    duration: '22:10',
+    category: ['Analysis', 'boxing'],
+    sport: 'Boxing',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/ed/99/84/ed99845ae34516b4a03b21a641258b70.jpg',
+    tags: ['Boxing', 'Technique', 'Defense', 'Analysis'],
+    isActive: true
+  },
+
+  // MMA Videos
+  {
+    videoId: 'MMA1',
+    youtubeId:'Tmu6vNdAaPc',
+    title: 'UFC Main Event: Full Fight Breakdown',
+    description: 'Complete analysis of the UFC main event',
+    duration: '32:15',
+    category: ['Analysis', 'mma'],
+    sport: 'MMA',
+    type: 'video',
+    thumbnail: 'https://pbs.twimg.com/media/G57KObwacAAuomM.jpg',
+    featured: true,
+    tags: ['MMA', 'UFC', 'Fight', 'Analysis'],
+    isActive: true
+  },
+  {
+    videoId: 'MMA2',
+    youtubeId:'Y1SESf1MoSc',
+    title: 'Submission of the Year Candidates',
+    description: 'The most impressive submissions from the year',
+    duration: '19:45',
+    category: ['Highlights', 'mma'],
+    sport: 'MMA',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/bc/36/cd/bc36cd9d286e58ef2a62b157b0f64f45.jpg',
+    tags: ['MMA', 'UFC', 'Submissions', 'Highlights'],
+    isActive: true
+  },
+
+  {
+  videoId: 'MMA3',
+  youtubeId: 'XG4Hhd4rqhA', 
+  title: 'Islam Makhachev Dominant Finishes',
+  description: 'A compilation of Islam Makhachev’s most dominant finishes inside the Octagon',
+  duration: '14:32',
+  category: ['Highlights', 'mma'],
+  sport: 'MMA',
+  type: 'video',
+  thumbnail: 'https://i.pinimg.com/736x/83/48/9e/83489edece38d5712eabf39852f7c369.jpg',
+  tags: ['MMA', 'UFC', 'Islam Makhachev', 'Finishes', 'Highlights'],
+  isActive: true
+},
+
+  {
+    videoId: 'MMA4',
+    youtubeId:'x0Xgx9sTsKs',
+    title: 'Khabib: The Eagles Journey',
+    description: 'The rise and career of Khabib Nurmagomedav',
+    duration: '26:30',
+    category: ['Feature', 'mma'],
+    sport: 'MMA',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/c8/6e/68/c86e687da9e788b44eed8c87e13e2791.jpg',
+    tags: ['MMA', 'UFC', 'Conor McGregor', 'Feature'],
+    isActive: true
+  },
+
+  {
+  videoId: 'MMA5',
+  youtubeId: 'VDMphbRZpTU',
+  title: 'Khabib Nurmagomedov Best Highlights',
+  description: 'Unstoppable moments from Khabib’s legendary undefeated career',
+  duration: '17:21',
+  category: ['Highlights', 'mma'],
+  sport: 'MMA',
+  type: 'video',
+  thumbnail: 'https://i.pinimg.com/736x/ac/4e/e3/ac4ee374e8ea2622596594338d9d9a63.jpg',
+  tags: ['MMA', 'UFC', 'Khabib', 'Highlights', 'Grappling'],
+  isActive: true
+},
+
+{
+  videoId: 'MMA6',
+  youtubeId: 'shGPpy0AcYM',
+  title: 'Justin Gaethje Brutal Knockouts',
+  description: 'The most explosive knockouts from Justin Gaethje’s career.',
+  duration: '11:58',
+  category: ['Feature', 'mma'],
+  sport: 'MMA',
+  type: 'video',
+  thumbnail: 'hhttps://i.pinimg.com/736x/e2/10/5e/e2105e46743319b14b4708b48462b903.jpg',
+  tags: ['MMA', 'UFC', 'Justin Gaethje', 'Knockouts', 'Highlights'],
+  isActive: true
+},
+
+{
+  videoId: 'MMA7',
+  youtubeId: 'nh80a_lKljU',
+  title: 'Charles Oliveira Best Submissions',
+  description: 'Elite-level submissions from the UFC’s all-time submission leader.',
+  duration: '15:02',
+  category: ['Feature', 'mma'],
+  sport: 'MMA',
+  type: 'video',
+  thumbnail: 'https://i.pinimg.com/1200x/0b/da/30/0bda30ef57892e711b426e24774434b5.jpg',
+  tags: ['MMA', 'UFC', 'Charles Oliveira', 'Submissions', 'Highlights'],
+  isActive: true
+},
+
+
+
+
+  // Olympics Videos
+  {
+    videoId: 'O1',
+    youtubeId:'EDmBOZdYfn0',
+    title: 'Olympic 100m Final: World Record Performance',
+    description: 'The incredible world record 100m final',
+    duration: '12:20',
+    category: ['Highlights', 'olympics'],
+    sport: 'Olympics',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/98/8a/b9/988ab9655d9705ff570ca2f88d6e3cc8.jpg',
+    featured: true,
+    tags: ['Olympics', 'Track', '100m', 'World Record'],
+    isActive: true
+  },
+  {
+    videoId: 'O2',
+    youtubeId:'q14W1uCJag4',
+    title: 'Swimming: Gold Medal Races Compilation',
+    description: 'All the gold medal swimming performances',
+    duration: '24:35',
+    category: ['Highlights', 'olympics'],
+    sport: 'Olympics',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/1200x/3a/6e/9e/3a6e9e417667d53ccbf48809ed4031e9.jpg',
+    tags: ['Olympics', 'Swimming', 'Gold Medal', 'Highlights'],
+    isActive: true
+  },
+  {
+    videoId: 'O3',
+    youtubeId:'dZMHfNTZrr0',
+    title: 'Gymnastics: Perfect 10 Performances',
+    description: 'The most flawless gymnastics routines',
+    duration: '21:15',
+    category: ['Highlights', 'olympics'],
+    sport: 'Olympics',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/1200x/89/e0/7f/89e07fdf4aaef2ef2cd4c894bad6d8da.jpg',
+    tags: ['Olympics', 'Gymnastics', 'Perfect 10', 'Highlights'],
+    isActive: true
+  },
+
+  // Rugby Videos
+  {
+    videoId: 'R1',
+    youtubeId:'YZslv0vuMNk',
+    title: 'Rugby World Cup Final: Epic Battle',
+    description: 'The intense Rugby World Cup final match',
+    duration: '35:20',
+    category: ['Highlights', 'rugby'],
+    sport: 'Rugby',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/29/b1/2b/29b12b443d179a1001cd6ab3c8fe854c.jpg',
+    featured: true,
+    tags: ['Rugby', 'World Cup', 'Final', 'Highlights'],
+    isActive: true
+  },
+  {
+    videoId: 'R2',
+    youtubeId:'1x5MZZxpq_o',
+    title: 'All Blacks Haka: Most Powerful Performances',
+    description: 'The most intense Haka performances from New Zealand',
+    duration: '14:50',
+    category: ['Feature', 'rugby'],
+    sport: 'Rugby',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/a4/3d/27/a43d2739ba781872c98b26cd8ba3d8ad.jpg',
+    tags: ['Rugby', 'All Blacks', 'Haka', 'New Zealand'],
+    isActive: true
+  },
+  {
+    videoId: 'R3',
+    youtubeId:'TpV-GB9_MqI',
+    title: 'Six Nations: Tournament Highlights',
+    description: 'Best moments from the Six Nations championship',
+    duration: '28:45',
+    category: ['Highlights', 'rugby'],
+    sport: 'Rugby',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/1200x/8f/d0/c0/8fd0c0a0f3c03854a01939c1ef5f0027.jpg',
+    tags: ['Rugby', 'Six Nations', 'Tournament', 'Highlights'],
+    isActive: true
+  },
+
+  // Tennis Videos (Additional)
+  {
+    videoId: 'T10',
+    youtubeId:'e9d-d7iR7Ho',
+    title: 'US Open: Epic Five-Set Matches',
+    description: 'The most dramatic five-set matches from US Open',
+    duration: '26:15',
+    category: ['Highlights', 'tennis'],
+    sport: 'Tennis',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/1200x/61/4e/15/614e1561a2ce1e4e34ffc14371e696ce.jpg',
+    tags: ['Tennis', 'US Open', 'Grand Slam', 'Highlights'],
+    isActive: true
+  },
+  {
+    videoId: 'T11',
+    youtubeId:'e9d-d7iR7Ho',
+    title: 'Roger Federer: Career Retrospective',
+    description: 'Looking back at Roger Federer\'s incredible career',
+    duration: '32:20',
+    category: ['Feature', 'tennis'],
+    sport: 'Tennis',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/2a/2a/88/2a2a88638bfe92fb591ce11462411446.jpg',
+    tags: ['Tennis', 'Roger Federer', 'Career', 'Feature'],
+    isActive: true
+  },
+
+  // Hockey Videos
+  {
+    videoId: 'H1',
+    youtubeId:'qeTnB0be_yM',
+    title: 'Stanley Cup Final: Game 7 Overtime Thriller',
+    description: 'The dramatic Game 7 overtime in Stanley Cup final',
+    duration: '18:30',
+    category: ['Highlights', 'hockey'],
+    sport: 'Hockey',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/1200x/3d/17/b3/3d17b30fd0e8050b07671914b5ee3306.jpg',
+    featured: true,
+    tags: ['Hockey', 'NHL', 'Stanley Cup', 'Overtime'],
+    isActive: true
+  },
+  {
+    videoId: 'H2',
+    youtubeId:'oVxbkR4zsGw',
+    title: 'Wayne Gretzky: The Great One\'s Greatest Goals',
+    description: 'The most memorable goals from Wayne Gretzky',
+    duration: '22:45',
+    category: ['Highlights', 'hockey'],
+    sport: 'Hockey',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/64/20/e5/6420e51442375ea4100cdd3b916136bb.jpg',
+    tags: ['Hockey', 'Wayne Gretzky', 'NHL', 'Goals'],
+    isActive: true
+  },
+  {
+    videoId: 'H3',
+    youtubeId:'6Buoskr4bgo',
+    title: 'NHL: Top 10 Saves of the Season',
+    description: 'The most incredible saves from NHL goalies',
+    duration: '15:20',
+    category: ['Highlights', 'hockey'],
+    sport: 'Hockey',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/39/29/e4/3929e4cc7b5d9359545a7ef8ee035ad6.jpg',
+    tags: ['Hockey', 'NHL', 'Saves', 'Goalies'],
+    isActive: true
+  },
+
+  // Formula 1 Videos
+  {
+    videoId: 'FR11',
+    youtubeId:'ajzQj7bjSWE',
+    title: 'Monaco Grand Prix: Race Highlights',
+    description: 'The most glamorous race on the F1 calendar',
+    duration: '16:25',
+    category: ['Highlights', 'hockey'],
+    sport: 'Formula1',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/4c/dd/b9/4cddb9b24675881cc11fa4c23f101fe5.jpg',
+    featured: true,
+    tags: ['Formula1', 'F1', 'Monaco', 'Grand Prix'],
+    isActive: true
+  },
+  {
+    videoId: 'FR12',
+    youtubeId:'oPTZCpo5uOg',
+    title: 'Lewis Hamilton: Champion Drive Analysis',
+    description: 'Breaking down Lewis Hamilton\'s championship drives',
+    duration: '24:30',
+    category: ['Analysis', 'hockey'],
+    sport: 'Formula1',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/1200x/cb/3b/33/cb3b33dcd3c9510a4090413f8d1ea04f.jpg',
+    tags: ['Formula1', 'Lewis Hamilton', 'Champion', 'Analysis'],
+    isActive: true
+  },
+  {
+    videoId: 'FR13',
+    youtubeId:'zacKiHlYQEU',
+    title: 'F1: Best Overtakes of the Season',
+    description: 'The most daring and skillful overtakes',
+    duration: '19:15',
+    category: ['Highlights', 'formula1'],
+    sport: 'Formula1',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/6d/44/64/6d446444cc87c06e78afc39ff2efe564.jpg',
+    tags: ['Formula1', 'Overtakes', 'Racing', 'Highlights'],
+    isActive: true
+  },
+  {
+    youtubeId: 'FR14',
+    youtubeId:'0VclWzlhtFg',
+    title: 'F1 Technology: Car Development Secrets',
+    description: 'Inside the technological innovations in F1',
+    duration: '28:40',
+    category: ['Analysis', 'formula1'],
+    sport: 'Formula1',
+    type: 'video',
+    thumbnail: 'https://i.pinimg.com/736x/14/79/b6/1479b6ddddce538d8bc6fbbc27cf5080.jpg',
+    tags: ['Formula1', 'Technology', 'Engineering', 'Analysis'],
+    isActive: true
+  },
+
+  // Additional Live Streams
+  {
+    videoId: 'ls5',
+    title: 'PGA Tour: The Masters - LIVE',
+    thumbnail: 'https://i.pinimg.com/1200x/fb/70/67/fb7067f43fa9e36f45c7b8369e7c6ece.jpg',
+    youtubeId: 'Jn9auU-6JtQ',
+    viewers: '156K',
+    publishedAt: 'Live now',
+    category: 'golf',
+    tags: ['live'],
+    sport: 'golf',
+    description: 'Final round of The Masters live from Augusta',
+    type: 'live',
+    status: 'live',
+    views: '0'
+  },
+  {
+    videoId: 'ls6',
+    title: 'Heavyweight Boxing: Title Fight - LIVE',
+    thumbnail: 'https://i.pinimg.com/736x/6d/22/ee/6d22ee1268a74df7baef3514fce21607.jpg',
+    youtubeId: '6DINLWc_UjQ',
+    viewers: '2.1M',
+    publishedAt: 'Live now',
+    category: 'boxing',
+    tags: ['live'],
+    sport: 'boxing',
+    description: 'World heavyweight championship fight live',
+    type: 'live',
+    status: 'live',
+    views: '0'
+  },
+  {
+    videoId: 'ls7',
+    title: 'Formula 1: Monaco Grand Prix - LIVE',
+    thumbnail: 'https://i.pinimg.com/1200x/84/55/89/845589dcea01bd8565e6498dee458b57.jpg',
+    youtubeId: 'ajzQj7bjSWE',
+    viewers: '3.4M',
+    publishedAt: 'Live now',
+    category: 'formula1',
+    tags: ['live'],
+    sport: 'formula1',
+    description: 'Monaco Grand Prix live from Monte Carlo',
+    type: 'live',
+    status: 'live',
+    views: '0'
+  },
+  {
+    videoId: 'ls8',
+    title: 'NHL: Stanley Cup Final - LIVE',
+    thumbnail: 'https://i.pinimg.com/1200x/e2/99/83/e29983649cbb4a0bf1e730fccd156d78.jpg',
+    youtubeId: '8O58QxnTRuw',
+    viewers: '890K',
+    publishedAt: 'Live now',
+    category: 'hockey',
+    tags: ['live'],
+    sport: 'hockey',
+    description: 'Stanley Cup Final Game 7 live',
+    type: 'live',
+    status: 'live',
+    views: '0'
   }
 ];
 

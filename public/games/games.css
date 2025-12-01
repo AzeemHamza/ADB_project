@@ -3010,3 +3010,215 @@ mark {
     right: 5px;
   }
 }
+/* Loading States */
+.loading-text {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px;
+  font-style: italic;
+}
+
+.skeleton {
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 180px;
+  background: var(--muted);
+  border-radius: var(--radius);
+}
+
+.skeleton-text {
+  height: 12px;
+  margin-bottom: 8px;
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+/* Refresh Button Styles */
+.refresh-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.refresh-btn.small {
+  padding: 4px 8px;
+  font-size: 10px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Sport follow buttons in dropdown */
+.sport-item {
+  position: relative;
+  padding-right: 50px !important;
+}
+
+.sport-follow-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sport-follow-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.sport-follow-btn .follow-icon {
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.sport-follow-btn.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.sport-follow-btn.loading .follow-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.sport-follow-btn.following .follow-icon {
+  color: var(--accent);
+}
+
+/* Hero follow button */
+.sport-follow-btn-hero {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sport-follow-btn-hero:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.sport-follow-btn-hero.following {
+  background: var(--accent);
+  border-color: var(--accent);
+  padding-right: 45px;
+}
+
+.sport-follow-btn-hero.following .follow-text {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.sport-follow-btn-hero.following .follow-icon-hero {
+  position: absolute;
+  right: 15px;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sport-follow-btn-hero .follow-text {
+  transition: all 0.3s ease;
+}
+
+.sport-follow-btn-hero .follow-icon-hero {
+  font-size: 18px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.sport-follow-btn-hero:not(.following) .follow-icon-hero {
+  display: none;
+}
+
+.sport-follow-btn-hero.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.sport-follow-btn-hero.loading .follow-text::after {
+  content: '...';
+  animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .sport-follow-btn.mobile {
+    position: static;
+    transform: none;
+    margin-left: auto;
+  }
+  
+  .mobile-dropdown-item {
+    padding-right: 50px !important;
+  }
+}

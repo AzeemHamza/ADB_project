@@ -232,186 +232,124 @@
   </div>
 
  <main>
-    <!-- Hero Carousel with Follow Button -->
-    <section class="hero-carousel">
-      <div class="hero-item active">
-        <img src="https://i.pinimg.com/1200x/51/53/91/515391f66d5abb9c2aed9e63f1eee913.jpg" alt="Football Action" class="hero-image">
-        <div class="hero-badge">LIVE</div>
-        <div class="hero-content">
-          <h2>Manchester United vs Liverpool - Premier League</h2>
-          <p>Watch live coverage from Old Trafford</p>
-          <div class="hero-actions">
-            <a href="https://youtu.be/YqKYpgZ9FWU?si=tiInOfQdicXhq7IE" target="_blank" class="youtube-indicator">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000">
-                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-              </svg>
-              Watch on YouTube
-            </a>
-            <!-- NEW: Follow Button on Hero Section -->
-            <button class="sport-follow-btn-hero" id="footballFollowBtn" data-sport-id="cricket" data-sport-name="Cricket" data-sport-icon="🏏">
-              <span class="follow-text">Follow</span>
-              <span class="follow-icon-hero">🤍</span>
-            </button>
+  <!-- Hero Carousel with Follow Button -->
+  <section class="hero-carousel">
+    <div class="hero-item active">
+      <img src="" alt="Cricket Action" class="hero-image" id="heroImage">
+      <div class="hero-badge" id="heroBadge">LIVE</div>
+      <div class="hero-content">
+        <h2 id="heroTitle">Loading Cricket Content...</h2>
+        <p id="heroDescription">Loading live cricket matches and highlights</p>
+        <div class="hero-actions">
+          <a href="#" target="_blank" class="youtube-indicator" id="heroWatchLink" style="display: none;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000">
+              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+            </svg>
+            Watch on YouTube
+          </a>
+          <button class="sport-follow-btn-hero" id="heroFollowBtn" data-sport-id="cricket" data-sport-name="Cricket" data-sport-icon="🏏">
+            <span class="follow-text">Follow</span>
+            <span class="follow-icon-hero">🤍</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="content-wrapper">
+    <div class="left-column">
+      <section class="card-grid">
+        <h2>Match Highlights</h2>
+        <div class="cards" id="highlightsContainer">
+          <div class="loading-cards">
+            <div class="card skeleton">
+              <div class="card-image skeleton-image"></div>
+              <div class="card-content">
+                <h3 class="skeleton-text"></h3>
+                <div class="card-meta skeleton-meta"></div>
+              </div>
+            </div>
+            <div class="card skeleton">
+              <div class="card-image skeleton-image"></div>
+              <div class="card-content">
+                <h3 class="skeleton-text"></h3>
+                <div class="card-meta skeleton-meta"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card-grid">
+        <h2>Features & Analysis</h2>
+        <div class="cards" id="featuresContainer">
+          <div class="loading-cards">
+            <div class="card skeleton">
+              <div class="card-image skeleton-image"></div>
+              <div class="card-content">
+                <h3 class="skeleton-text"></h3>
+                <div class="card-meta skeleton-meta"></div>
+              </div>
+            </div>
+            <div class="card skeleton">
+              <div class="card-image skeleton-image"></div>
+              <div class="card-content">
+                <h3 class="skeleton-text"></h3>
+                <div class="card-meta skeleton-meta"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="right-column">
+      <div class="widget">
+        <h3>Live Matches</h3>
+        <div id="liveScoresContainer">
+          <div class="live-score">
+            <div class="teams">Loading live matches...</div>
+            <div class="score">-</div>
+            <div class="match-status">Check later</div>
           </div>
         </div>
       </div>
-    </section>
 
-    <div class="content-wrapper">
-      <div class="left-column">
-        <section class="card-grid">
-          <h2>Match Highlights</h2>
-          <div class="cards">
-            <a href="https://youtu.be/m60WK8BoryY?si=HnSu6tkh-MjNCdv3" target="_blank" class="card">
-              <div class="card-image">
-                <img src="https://i.pinimg.com/1200x/be/0a/2a/be0a2a037b1b4ec55bbc277f30aea823.jpg" alt="T20 Final" loading="lazy">
-                <div class="card-badge">18:45</div>
-                <div class="youtube-overlay">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF0000">
-                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="card-content">
-                <h3>India vs Pakistan: Champions Trophy Final Highlights</h3>
-                <div class="card-meta">
-                  <span>T20 World Cup</span>
-                  <span>5h ago</span>
-                </div>
-              </div>
-            </a>
-
-            <a href="https://youtu.be/CbMLUaGwVUk?si=qF36fQqXmx9ABRkC" target="_blank" class="card">
-              <div class="card-image">
-                <img src="https://i.pinimg.com/1200x/46/a6/6f/46a66fa555e7d4ce6c19677bbd26445a.jpg" alt="Test Match" loading="lazy">
-                <div class="card-badge">22:30</div>
-                <div class="youtube-overlay">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF0000">
-                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="card-content">
-                <h3>England vs Pakistan: Day 4 Highlights</h3>
-                <div class="card-meta">
-                  <span>Test Series</span>
-                  <span>1d ago</span>
-                </div>
-              </div>
-            </a>
+      <div class="widget">
+        <h3>World Cup Standings</h3>
+        <div id="standingsContainer">
+          <div style="font-size: 14px; color: #666; text-align: center; padding: 20px;">
+            Loading standings...
           </div>
-        </section>
-
-        <section class="card-grid">
-          <h2>Features & Analysis</h2>
-          <div class="cards">
-            <a href="https://youtu.be/6QB8C48DHlA?si=HDDBw3Ki7kqJ4Cin" target="_blank" class="card">
-              <div class="card-image">
-                <img src="https://i.pinimg.com/1200x/96/38/29/96382929546214435455c11fba8af270.jpg" alt="Player Analysis" loading="lazy">
-                <div class="card-badge">12:15</div>
-                <div class="youtube-overlay">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF0000">
-                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="card-content">
-                <h3>Kohli's masterclass: Breaking down his century</h3>
-                <div class="card-meta">
-                  <span>Analysis</span>
-                  <span>2d ago</span>
-                </div>
-              </div>
-            </a>
-
-            <a href="https://youtu.be/PzHZGefMx9Q?si=6JZ6DhZMXMctFEHF" target="_blank" class="card">
-              <div class="card-image">
-                <img src="https://i.pinimg.com/1200x/6d/22/79/6d22791c4f98d9ec6a154481bae54e77.jpg" alt="Team Feature" loading="lazy">
-                <div class="card-badge">15:40</div>
-                <div class="youtube-overlay">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF0000">
-                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="card-content">
-                <h3>Australia's road to the final: A tactical review</h3>
-                <div class="card-meta">
-                  <span>Feature</span>
-                  <span>3d ago</span>
-                </div>
-              </div>
-            </a>
-          </div>
-        </section>
+        </div>
       </div>
 
-      <div class="right-column">
-        <div class="widget">
-          <h3>Live Matches</h3>
-          <div class="live-score">
-            <div class="teams">IND vs AUS</div>
-            <div class="score">185/6</div>
-            <div class="live-indicator">LIVE</div>
-          </div>
-          <div class="live-score">
-            <div class="teams">ENG vs PAK</div>
-            <div class="score">312 & 145/2</div>
-            <div>Day 4</div>
-          </div>
-          <div class="live-score">
-            <div class="teams">NZ vs SA</div>
-            <div class="score">Starts 23:00</div>
-            <div>T20</div>
-          </div>
-        </div>
-
-        <div class="widget">
-          <h3>World Cup Standings</h3>
-          <div style="font-size: 14px;">
-            <div style="display: flex; justify-content: space-between; background: var(--sky-gray); padding: 8px 10px;">
-              <span>Team</span>
-              <span>Pts</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid var(--sky-border);">
-              <span>1. India</span>
-              <span>12</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid var(--sky-border);">
-              <span>2. Australia</span>
-              <span>10</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid var(--sky-border);">
-              <span>3. England</span>
-              <span>8</span>
+      <div class="widget">
+        <h3>Top Teams</h3>
+        <div id="featuredTeamsContainer" class="top-picks-grid">
+          <div class="top-pick">
+            <div class="top-pick-content">
+              <h4>Loading teams...</h4>
+              <div class="top-pick-meta">Loading data</div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="widget">
-          <h3>Top Performers</h3>
+      <div class="widget">
+        <h3>Latest News</h3>
+        <div id="newsContainer" class="top-picks-grid">
           <div class="top-pick">
-            <div class="top-pick-image">
-              <img src="https://images.unsplash.com/photo-1612872087720-bd5b9c0b4c8d?w=100&h=60&fit=crop" alt="Batsman" loading="lazy">
-            </div>
             <div class="top-pick-content">
-              <h4>Virat Kohli: 112* vs Australia</h4>
-              <div class="top-pick-meta">Batting • Today</div>
-            </div>
-          </div>
-          <div class="top-pick">
-            <div class="top-pick-image">
-              <img src="https://images.unsplash.com/photo-1592923908558-8b1c2c2d8e8a?w=100&h=60&fit=crop" alt="Bowler" loading="lazy">
-            </div>
-            <div class="top-pick-content">
-              <h4>Pat Cummins: 5/38 vs India</h4>
-              <div class="top-pick-meta">Bowling • Today</div>
+              <h4>Loading cricket news...</h4>
+              <div class="top-pick-meta">Loading updates</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </main>
+  </div>
+</main>
 
   <footer class="site-footer">
     <p>&copy; <span id="year">2024</span> AllSports. All rights reserved.</p>

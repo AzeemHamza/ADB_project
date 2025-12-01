@@ -29,7 +29,7 @@
     <nav class="main-nav" role="navigation" aria-label="Primary navigation">
       <ul class="nav-list" role="menubar">
         <li role="none">
-          <a role="menuitem" href="index.html" class="nav-link nav-active" aria-current="page">Home</a>
+          <a role="menuitem" href="index.html" class="nav-link">Home</a>
         </li>
         
         <!-- Sports Dropdown -->
@@ -98,7 +98,6 @@
         <li role="none">
           <a role="menuitem" href="fixtures.html" class="nav-link">Fixtures</a>
         </li>
-
         
         <!-- Profile Link -->
         <li role="none">
@@ -132,7 +131,7 @@
       <span id="loginText">Login</span>
     </button>
     <div class="user-dropdown" id="userDropdown">
-      <a href="#" id="logoutBtn">Sign Out</a>
+      <a href="index.html" id="logoutBtn">Sign Out</a>
     </div>
   </div>
 </div>
@@ -161,7 +160,7 @@
     
     <nav class="mobile-nav" role="navigation" aria-label="Mobile navigation">
       <ul class="mobile-nav-list">
-        <li><a href="index.html" class="mobile-nav-link mobile-nav-active">Home</a></li>
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
         
         <li class="mobile-dropdown">
           <button class="mobile-nav-link mobile-nav-button" aria-expanded="false">
@@ -187,6 +186,9 @@
         <li><a href="watch.html" class="mobile-nav-link">Watch</a></li>
         <li><a href="teams.html" class="mobile-nav-link">Teams</a></li>
         <li><a href="fixtures.html" class="mobile-nav-link">Fixtures</a></li>
+        
+        <!-- Profile Link in Mobile -->
+        <li><a href="profile.html" class="mobile-nav-link mobile-nav-active">Profile</a></li>
         
         <li class="mobile-dropdown">
           <button class="mobile-nav-link mobile-nav-button" aria-expanded="false">
@@ -221,6 +223,7 @@
       <span id="mobileLoginText">Login</span>
     </button>
     <div class="user-dropdown" id="mobileUserDropdown">
+      <a href="profile.html">My Profile</a>
       <a href="#" id="mobileLogoutBtn">Sign Out</a>
     </div>
   </div>
@@ -229,323 +232,317 @@
 
 <!-- Main Content -->
 <div class="container">
-  <!-- Live Ticker -->
-  <div class="ticker" role="region" aria-label="Live scores and updates">
-    <div class="label">LIVE</div>
-    <div class="marquee" id="liveTicker" aria-live="polite">
-      <div class="marquee-inner" id="marqueeInner">
-        ⚽ Man City 2-1 Liverpool (75') • 🏀 Lakers vs Celtics: 98-95 Q4 • 🏏 IND vs AUS: 245/3 (45) • 🎾 Djokovic leads 2-1 sets • ⚾ Yankees 4-3 Red Sox F
+  <!-- Profile Header -->
+  <div class="profile-header" id="profileHeader">
+    <div class="profile-avatar">
+      <div class="avatar-image" id="profileAvatar">
+        <span id="avatarInitials">U</span>
       </div>
     </div>
-    <div class="meta">Updated: <strong id="tickerTime">2 mins ago</strong></div>
-  </div>
-
-  <!-- Advanced Filters -->
-  <div class="advanced-filters" aria-label="Advanced filters for sports">
-    <div class="filter-group">
-      <label for="sportFilter">Sport</label>
-      <select id="sportFilter" class="filter-select">
-        <option value="All">All</option>
-        <option value="Football">⚽ Football</option>
-        <option value="Cricket">🏏 Cricket</option>
-        <option value="Basketball">🏀 Basketball</option>
-        <option value="Tennis">🎾 Tennis</option>
-        <option value="Baseball">⚾ Baseball</option>
-        <option value="Hockey">🏒 Hockey</option>
-        <option value="Golf">⛳ Golf</option>
-        <option value="Rugby">🏉 Rugby</option>
-        <option value="Formula1">🏎️ Formula 1</option>
-        <option value="Boxing">🥊 Boxing</option>
-        <option value="MMA">🥋 MMA</option>
-        <option value="Olympics">🏅 Olympics</option>
-      </select>
-    </div>
-    
-    <div class="filter-group">
-      <label for="leagueFilter">League</label>
-      <select id="leagueFilter" class="filter-select">
-        <option value="All">All</option>
-        <option value="premier-league">Premier League</option>
-        <option value="nba">NBA</option>
-        <option value="ipl">IPL</option>
-        <option value="nfl">NFL</option>
-        <option value="mlb">MLB</option>
-      </select>
-    </div>
-    
-    <div class="filter-group">
-      <label for="statusFilter">Status</label>
-      <select id="statusFilter" class="filter-select">
-        <option value="All">All</option>
-        <option value="Live">Live</option>
-        <option value="Upcoming">Upcoming</option>
-        <option value="Finished">Finished</option>
-      </select>
-    </div>
-
-    <div class="filter-group">
-      <button class="btn btn-secondary" id="resetFiltersBtn">Clear Filters</button>
+    <div class="profile-info">
+      <h1 id="profileUsername">Username</h1>
+      <p id="profileEmail">user@example.com</p>
+      <div class="profile-stats">
+        <div class="stat">
+          <span class="stat-number" id="followedTeamsCount">0</span>
+          <span class="stat-label">Teams</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" id="followedPlayersCount">0</span>
+          <span class="stat-label">Players</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" id="remindersCount">0</span>
+          <span class="stat-label">Reminders</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" id="watchHistoryCount">0</span>
+          <span class="stat-label">Videos Watched</span>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Main Content -->
-  <main class="main-grid">
-    <!-- Left: content -->
-    <section class="main-content">
-      <!-- Featured Hero Section -->
-      <div class="featured">
-        <div class="hero compact-hero" aria-labelledby="heroTitle">
-          <div class="hero-img" id="heroImg" style="background-image: url('https://i.pinimg.com/736x/bd/f8/7f/bdf87f851419e4f63f82126a5eceae47.jpg')">
-            <div class="hero-overlay">
-              <button class="play-btn" aria-label="Play highlight video" id="playHeroBtn" data-youtube-id="XZYQv1yDdsM">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </button>
-            </div>
+  <!-- Profile Navigation -->
+  <div class="profile-nav">
+    <button class="profile-nav-btn active" data-section="overview">Overview</button>
+    <button class="profile-nav-btn" data-section="following">Following</button>
+    <button class="profile-nav-btn" data-section="reminders">Reminders</button>
+    <button class="profile-nav-btn" data-section="settings">Settings</button>
+  </div>
+
+  <!-- Profile Content -->
+  <main class="profile-content">
+    <!-- Overview Section -->
+    <section class="profile-section active" id="overviewSection">
+      <div class="profile-grid">
+        <!-- Pinned Player -->
+        <div class="profile-card large-card">
+          <div class="card-header">
+            <h3>⭐ Pinned Player</h3>
           </div>
-          <div class="hero-body">
-            <div class="tag" id="heroTag">FOOTBALL</div>
-            <h2 id="heroTitle">Los Blancos Shine as Barça Falters</h2>
-            <div class="meta">By <strong id="heroAuthor"> Alex Morgan</strong> • <span id="heroDate">Today, 18:45</span></div>
-            <p id="heroExcerpt">Real Madrid conquered El Clásico in thrilling fashion, blending flair, precision, and unyielding dominance to outshine Barcelona..</p>
-            
-            <div class="hero-match-info" id="heroMatchInfo">
-              <div class="hero-score" id="heroScore">3-0</div>
-              <div class="hero-status" id="heroStatus">Finished</div>
-              <div class="hero-venue" id="heroVenue">Santiago Bernabeu</div>
-            </div>
-            
-            <div class="actions">
-              <button class="btn" id="readStoryBtn">Read full story</button>
-              <button class="btn ghost" id="followSportBtn">Follow Football</button>
+          <div class="pinned-player-content" id="pinnedPlayerContent">
+            <div class="empty-state">
+              <div class="empty-icon">⭐</div>
+              <h4>No pinned player</h4>
+              <p>Pin your favorite player to see their stats here</p>
+              <button class="btn" id="pinPlayerBtn">Pin a Player</button>
             </div>
           </div>
         </div>
 
-        <!-- Video Highlights Section - FIXED: Added correct ID -->
-        <section class="carousel-section" id="videoHighlights" aria-label="Video highlights">
-          <!-- Content will be populated by JavaScript -->
-        </section>
-
-        <!-- Live Events Section - FIXED: Added correct structure -->
-        <section class="carousel-section live-now-section" aria-label="Live events">
-          <div id="liveCarousel">
-            <!-- Content will be populated by JavaScript -->
+        <!-- Quick Stats -->
+        <div class="profile-card">
+          <div class="card-header">
+            <h3>📊 Quick Stats</h3>
           </div>
-        </section>
+          <div class="stats-grid-mini">
+            <div class="stat-mini">
+              <div class="stat-mini-value" id="totalMatches">0</div>
+              <div class="stat-mini-label">Matches Followed</div>
+            </div>
+            <div class="stat-mini">
+              <div class="stat-mini-value" id="totalSports">0</div>
+              <div class="stat-mini-label">Sports Following</div>
+            </div>
+            <div class="stat-mini">
+              <div class="stat-mini-value" id="activeReminders">0</div>
+              <div class="stat-mini-label">Active Reminders</div>
+            </div>
+            <div class="stat-mini">
+              <div class="stat-mini-value" id="videosWatched">0</div>
+              <div class="stat-mini-label">Videos Watched</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="profile-card">
+          <div class="card-header">
+            <h3>🕒 Recent Activity</h3>
+          </div>
+          <div class="activity-list" id="recentActivityList">
+            <div class="empty-state small">
+              <p>No recent activity</p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Following Section -->
+    <section class="profile-section" id="followingSection">
+      <div class="profile-tabs">
+        <button class="tab-btn active" data-tab="teams">Teams</button>
+        <button class="tab-btn" data-tab="players">Players</button>
+        <button class="tab-btn" data-tab="sports">Sports</button>
+        <button class="tab-btn" data-tab="matches">Matches</button>
       </div>
 
-      <!-- Quick Filter Chips -->
-      <div class="filter-chips" id="categoryFilters">
-        <button class="filter-chip active">All</button>
-        <button class="filter-chip">⚽ Football</button>
-        <button class="filter-chip">🏀 Basketball</button>
-        <button class="filter-chip">🏏 Cricket</button>
-        <button class="filter-chip">🎾 Tennis</button>
-        <button class="filter-chip">⚾ Baseball</button>
+      <div class="tab-content active" id="teamsTab">
+        <div class="followed-items-grid" id="followedTeamsGrid">
+          <div class="empty-state">
+            <div class="empty-icon">🏆</div>
+            <h4>No teams followed</h4>
+            <p>Start following your favorite teams to see them here</p>
+            <button class="btn" id="browseTeamsBtn">Browse Teams</button>
+          </div>
+        </div>
       </div>
 
-      <!-- Live Stats Section -->
-      <section id="stats" aria-label="Live statistics">
-        <h3 class="section-title">Live Stats</h3>
-        <div id="statsContainer" class="stats-grid compact-stats" aria-live="polite">
-          <div class="stat-card">
-            <div class="stat-number">247</div>
-            <div class="stat-label">Live Matches</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">1.2M</div>
-            <div class="stat-label">Viewers Online</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">89</div>
-            <div class="stat-label">Goals Today</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">42</div>
-            <div class="stat-label">Tournaments</div>
+      <div class="tab-content" id="playersTab">
+        <div class="followed-items-grid" id="followedPlayersGrid">
+          <div class="empty-state">
+            <div class="empty-icon">👤</div>
+            <h4>No players followed</h4>
+            <p>Follow your favorite players to track their performance</p>
+            <button class="btn" id="browsePlayersBtn">Browse Players</button>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- Latest News Grid -->
-      <section id="latest" aria-label="Latest news">
-        <div class="section-header">
-          <h3 class="section-title">Latest News</h3>
-          <div class="filter-info" id="filterInfo">
-            Showing: <span id="currentFilter">All Sports</span>
+      <div class="tab-content" id="sportsTab">
+        <div class="followed-items-grid" id="followedSportsGrid">
+          <div class="empty-state">
+            <div class="empty-icon">⚽</div>
+            <h4>No sports followed</h4>
+            <p>Follow sports to get personalized content</p>
+            <button class="btn" id="browseSportsBtn">Browse Sports</button>
           </div>
         </div>
-        <div class="news-grid enhanced-news-grid" id="newsGrid" aria-live="polite">
-          <!-- Content will be populated by JavaScript -->
-        </div>
-      </section>
+      </div>
 
-      <!-- Load More -->
-      <div class="load-more-wrap">
-        <button class="btn ghost" id="loadMoreBtn">
-          Load more stories
-        </button>
+      <div class="tab-content" id="matchesTab">
+        <div class="followed-items-list" id="followedMatchesList">
+          <div class="empty-state">
+            <div class="empty-icon">🔔</div>
+            <h4>No matches followed</h4>
+            <p>Follow matches to get live updates and reminders</p>
+            <button class="btn" id="browseMatchesBtn">Browse Matches</button>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Right: sidebar -->
-    <aside class="sidebar" aria-label="Sidebar">
-      <!-- Fixtures Panel -->
-      <div class="panel">
-        <h4>Today's Fixtures</h4>
-        <div class="fixtures-list" id="fixturesList">
-          <!-- Content will be populated by JavaScript -->
+    <!-- Reminders Section -->
+    <section class="profile-section" id="remindersSection">
+      <div class="reminders-header">
+        <h3>Your Reminders</h3>
+        <div class="reminder-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+          <button class="filter-btn" data-filter="live">Live</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
         </div>
       </div>
 
-      <!-- Top Teams Panel -->
-     <div class="panel">
-      <h4>Top Teams</h4>
-      <div class="small-list" id="topTeams">
-        <!-- Content will be populated by JavaScript -->
-      </div>
-    </div>
-
-       <!-- Follow Sports Panel -->
-      <div class="panel">
-      <h4>Follow Sports</h4>
-      <div class="sports-list" id="sportsList">
-
-        <a href="games/football.html" class="sport-follow-item">
-          <div class="sport-info">
-            <span class="sport-icon">⚽</span>
-            <div>
-              <strong>Football</strong>
-              <div class="muted">2.4M followers</div>
+      <div class="reminders-container">
+        <div class="reminders-column">
+          <h4>📅 Match Reminders</h4>
+          <div class="reminders-list" id="matchRemindersList">
+            <div class="empty-state">
+              <p>No match reminders set</p>
             </div>
           </div>
-        </a>
+        </div>
 
-        <a href="games/basketball.html" class="sport-follow-item">
-          <div class="sport-info">
-            <span class="sport-icon">🏀</span>
-            <div>
-              <strong>Basketball</strong>
-              <div class="muted">1.8M followers</div>
+        <div class="reminders-column">
+          <h4>🏆 Tournament Reminders</h4>
+          <div class="reminders-list" id="tournamentRemindersList">
+            <div class="empty-state">
+              <p>No tournament reminders set</p>
             </div>
-          </div>
-        </a>
-
-        <a href="games/cricket.html" class="sport-follow-item">
-          <div class="sport-info">
-            <span class="sport-icon">🏏</span>
-            <div>
-              <strong>Cricket</strong>
-              <div class="muted">1.5M followers</div>
-            </div>
-          </div>
-        </a>
-
-        <a href="games/tennis.html" class="sport-follow-item">
-          <div class="sport-info">
-            <span class="sport-icon">🎾</span>
-            <div>
-              <strong>Tennis</strong>
-              <div class="muted">890K followers</div>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </div>
-
-      <!-- Standings Panel -->
-      <div class="panel">
-        <h4>Premier League Standings</h4>
-        <div class="standings-table">
-          <div class="standing-row header">
-            <div class="standing-pos">#</div>
-            <div class="standing-team">Team</div>
-            <div class="standing-stat">P</div>
-            <div class="standing-stat">GD</div>
-            <div class="standing-stat">PTS</div>
-          </div>
-          <div class="standing-row">
-            <div class="standing-pos">1</div>
-            <div class="standing-team">Arsenal</div>
-            <div class="standing-stat">28</div>
-            <div class="standing-stat">+45</div>
-            <div class="standing-stat">68</div>
-          </div>
-          <div class="standing-row">
-            <div class="standing-pos">2</div>
-            <div class="standing-team">Man City</div>
-            <div class="standing-stat">28</div>
-            <div class="standing-stat">+39</div>
-            <div class="standing-stat">64</div>
-          </div>
-          <div class="standing-row">
-            <div class="standing-pos">3</div>
-            <div class="standing-team">Liverpool</div>
-            <div class="standing-stat">28</div>
-            <div class="standing-stat">+35</div>
-            <div class="standing-stat">63</div>
-          </div>
-          <div class="standing-row">
-            <div class="standing-pos">4</div>
-            <div class="standing-team">Aston Villa</div>
-            <div class="standing-stat">28</div>
-            <div class="standing-stat">+18</div>
-            <div class="standing-stat">55</div>
-          </div>
-          <div class="standing-row">
-            <div class="standing-pos">5</div>
-            <div class="standing-team">Tottenham</div>
-            <div class="standing-stat">28</div>
-            <div class="standing-stat">+15</div>
-            <div class="standing-stat">53</div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Newsletter Panel -->
-      <div class="panel">
-        <h4>Sports Newsletter</h4>
-        <p class="muted">Get top stories weekly — delivered to your inbox. Join 500K+ sports fans!</p>
-        <div class="newsletter-row">
-          <input type="email" id="nlEmail" placeholder="you@example.com" aria-label="Email for newsletter"/>
-          <button class="btn" id="subscribeBtn">Join</button>
+    <!-- Settings Section -->
+    <section class="profile-section" id="settingsSection">
+      <div class="settings-grid">
+        <div class="settings-card">
+          <h3>👤 Account Settings</h3>
+          <div class="settings-form">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" value="sportsfan123">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" value="user@example.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="+1 (555) 123-4567">
+            </div>
+            <button class="btn">Save Changes</button>
+          </div>
         </div>
-        <div style="margin-top: 12px; font-size: 12px; color: var(--text-secondary);">
-          ✓ No spam • Unsubscribe anytime
+
+        <div class="settings-card">
+          <h3>🔔 Notification Preferences</h3>
+          <div class="settings-list">
+            <div class="setting-item">
+              <div class="setting-info">
+                <strong>Match Reminders</strong>
+                <p>Get notified before matches start</p>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <strong>Score Updates</strong>
+                <p>Live score updates for followed matches</p>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <strong>News Alerts</strong>
+                <p>Breaking news for followed teams/players</p>
+              </div>
+              <label class="toggle">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <strong>Video Highlights</strong>
+                <p>When new highlights are available</p>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <h3>🎨 Appearance</h3>
+          <div class="theme-options">
+            <div class="theme-option">
+              <div class="theme-preview dark-theme"></div>
+              <span>Dark</span>
+              <input type="radio" name="theme" value="dark" checked>
+            </div>
+            <div class="theme-option">
+              <div class="theme-preview light-theme"></div>
+              <span>Light</span>
+              <input type="radio" name="theme" value="light">
+            </div>
+            <div class="theme-option">
+              <div class="theme-preview auto-theme"></div>
+              <span>Auto</span>
+              <input type="radio" name="theme" value="auto">
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-card danger-zone">
+          <h3>⚠️ Danger Zone</h3>
+          <div class="danger-actions">
+            <button class="btn btn-danger" id="exportDataBtn">Export My Data</button>
+            <button class="btn btn-danger" id="deleteAccountBtn">Delete Account</button>
+          </div>
         </div>
       </div>
-    </aside>
+    </section>
   </main>
-
-  <footer role="contentinfo">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h5>SportSphereX</h5>
-        <p>Your premier destination for sports news, live scores, and video highlights.</p>
-      </div>
-      <div class="footer-section">
-        <h5>Sports</h5>
-        <a href="games/football.html">Football</a>
-        <a href="games/cricket.html">Cricket</a>
-        <a href="games/basketball.html">Basketball</a>
-        <a href="games/tennis.html">Tennis</a>
-      </div>
-      <div class="footer-section">
-        <h5>Company</h5>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="#privacy">Privacy</a>
-        <a href="#terms">Terms</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      © 2024 SportSphereX — Built with ❤️ for sports fans worldwide
-    </div>
-  </footer>
 </div>
+
+<!-- Footer -->
+<footer role="contentinfo">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h5>SportSphereX</h5>
+      <p>Your premier destination for sports news, live scores, and video highlights.</p>
+    </div>
+    <div class="footer-section">
+      <h5>Sports</h5>
+      <a href="games/football.html">Football</a>
+      <a href="games/cricket.html">Cricket</a>
+      <a href="games/basketball.html">Basketball</a>
+      <a href="games/tennis.html">Tennis</a>
+    </div>
+    <div class="footer-section">
+      <h5>Company</h5>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#terms">Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2024 SportSphereX — Built with ❤️ for sports fans worldwide
+  </div>
+</footer>
 
 <!-- Toast Notification -->
 <div id="toast" class="toast"></div>

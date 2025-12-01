@@ -945,19 +945,9 @@
           <a role="menuitem" href="fixtures.html" class="nav-link">Fixtures</a>
         </li>
 
-        <!-- More Dropdown -->
-         <li role="none" class="has-dropdown" aria-haspopup="true">
-          <button class="nav-link nav-button" aria-controls="moreMenu" aria-haspopup="true" aria-expanded="false">
-            More <span class="caret">▾</span>
-          </button>
-          <div id="moreMenu" class="dropdown" role="menu" aria-hidden="true">
-            <a role="menuitem" href="more/podcasts.html" class="dropdown-item">Podcasts</a>
-            <a role="menuitem" href="more/highlights.html" class="dropdown-item">Video Highlights</a>
-            <a role="menuitem" href="more/news-archive.html" class="dropdown-item">News Archive</a>
-            <a role="menuitem" href="more/statistics.html" class="dropdown-item">Statistics</a>
-            <a role="menuitem" href="more/transfers.html" class="dropdown-item">Transfers</a>
-            <a role="menuitem" href="more/injury-news.html" class="dropdown-item">Injury News</a>
-          </div>
+        <!-- Profile Link -->
+        <li role="none">
+          <a role="menuitem" href="profile.html" class="nav-link nav-active" aria-current="page">Profile</a>
         </li>
       </ul>
     </nav>
@@ -1027,19 +1017,12 @@
         <li><a href="teams.html" class="mobile-nav-link">Teams</a></li>
         <li><a href="fixtures.html" class="mobile-nav-link">Fixtures</a></li>
         
-        <li class="mobile-dropdown">
-          <button class="mobile-nav-link mobile-nav-button" aria-expanded="false">
-            More <span class="mobile-caret">▾</span>
-          </button>
-          <div class="mobile-dropdown-menu" aria-hidden="true">
-            <a href="podcasts.html" class="mobile-dropdown-item">Podcasts</a>
-            <a href="highlights.html" class="mobile-dropdown-item">Video Highlights</a>
-            <a href="news-archive.html" class="mobile-dropdown-item">News Archive</a>
-            <a href="statistics.html" class="mobile-dropdown-item">Statistics</a>
-            <a href="transfers.html" class="mobile-dropdown-item">Transfers</a>
-            <a href="injury-news.html" class="mobile-dropdown-item">Injury News</a>
-          </div>
+       <!-- Profile Link -->
+        <li role="none">
+          <a role="menuitem" href="profile.html" class="nav-link nav-active" aria-current="page">Profile</a>
         </li>
+      </ul>
+    </nav>
       </ul>
     </nav>
 
@@ -1343,16 +1326,29 @@ class WatchApp {
 
   async loadUserPreferences() {
     try {
-      const response = await fetch('/api/user/preferences');
+      if (!this.state.user) {
+        console.log('User not logged in, skipping preferences load');
+        return;
+      }
+
+      const response = await fetch('/api/user/watch-history');
       const data = await response.json();
       
       if (data.success) {
-        this.state.savedVideos = new Set(data.savedVideos || []);
-        this.state.watchedVideos = new Set(data.watchedVideos || []);
-        console.log('Loaded user preferences');
+        const watchedVideoIds = data.watchHistory.map(item => item.videoId);
+        this.state.watchedVideos = new Set(watchedVideoIds);
+        console.log('Loaded user watch history:', watchedVideoIds.length, 'videos');
+      } else {
+        console.log('No watch history found or user not logged in');
+        this.state.watchedVideos = new Set();
       }
+      
+      this.state.savedVideos = new Set();
+      
     } catch (error) {
       console.error('Error loading user preferences:', error);
+      this.state.watchedVideos = new Set();
+      this.state.savedVideos = new Set();
     }
   }
 
@@ -1366,14 +1362,12 @@ class WatchApp {
       if (loginText) loginText.textContent = this.state.user.username;
       if (mobileLoginText) mobileLoginText.textContent = this.state.user.username;
       
-      // Hide dropdowns by default
       if (userDropdown) userDropdown.style.display = 'none';
       if (mobileUserDropdown) mobileUserDropdown.style.display = 'none';
     } else {
       if (loginText) loginText.textContent = 'Login';
       if (mobileLoginText) mobileLoginText.textContent = 'Login';
       
-      // Ensure dropdowns are hidden when not logged in
       if (userDropdown) userDropdown.style.display = 'none';
       if (mobileUserDropdown) mobileUserDropdown.style.display = 'none';
     }
@@ -1395,7 +1389,6 @@ class WatchApp {
         this.updateAuthUI();
         this.showToast('Logged out successfully');
         
-        // Redirect to home page after a short delay
         setTimeout(() => {
           window.location.href = 'index.html';
         }, 1000);
@@ -1417,9 +1410,27 @@ class WatchApp {
         this.renderFeaturedVideo(data.video);
       } else {
         console.error('Error loading featured video:', data.message);
+        this.renderFeaturedVideo({
+          videoId: 'featured',
+          title: 'Portugal vs Sweden - World Cup Qualifiers',
+          thumbnail: 'https://slapioneer.wordpress.com/wp-content/uploads/2013/11/cristiano-ronaldo-sweden-goal.gif',
+          description: 'Watch the full highlights from the thrilling World Cup qualifier between Portugal and Sweden. Cristiano Ronaldo scored a stunning hat-trick in this exciting match.',
+          views: '2.5M',
+          duration: '15:42',
+          publishedAt: '2 hours ago'
+        });
       }
     } catch (error) {
       console.error('Error loading featured video:', error);
+      this.renderFeaturedVideo({
+        videoId: 'featured',
+        title: 'Portugal vs Sweden - World Cup Qualifiers',
+        thumbnail: 'https://slapioneer.wordpress.com/wp-content/uploads/2013/11/cristiano-ronaldo-sweden-goal.gif',
+        description: 'Watch the full highlights from the thrilling World Cup qualifier between Portugal and Sweden. Cristiano Ronaldo scored a stunning hat-trick in this exciting match.',
+        views: '2.5M',
+        duration: '15:42',
+        publishedAt: '2 hours ago'
+      });
     }
   }
 
@@ -1496,15 +1507,35 @@ class WatchApp {
     
     if (!videosGrid) return;
     
+    if (this.state.videos.length === 0) {
+      this.showFallbackData();
+      return;
+    }
+    
     // Filter videos based on current category and search
     let filteredVideos = this.state.videos;
     
-    // Apply category filter
+    // Apply category filter - FIXED LOGIC
     if (this.state.currentCategory !== 'all') {
-      filteredVideos = this.state.videos.filter(video => 
-        video.category === this.state.currentCategory || 
-        video.tags.includes(this.state.currentCategory)
-      );
+      filteredVideos = this.state.videos.filter(video => {
+        // Check if category matches (handling both array and string cases)
+        const categoryMatch = Array.isArray(video.category) 
+          ? video.category.some(cat => 
+              cat.toLowerCase().includes(this.state.currentCategory.toLowerCase()) ||
+              this.state.currentCategory.toLowerCase().includes(cat.toLowerCase())
+            )
+          : (video.category && video.category.toLowerCase().includes(this.state.currentCategory.toLowerCase()));
+        
+        // Check if sport matches
+        const sportMatch = video.sport && 
+          video.sport.toLowerCase().includes(this.state.currentCategory.toLowerCase());
+        
+        // Check if tags match
+        const tagMatch = video.tags && 
+          video.tags.some(tag => tag.toLowerCase().includes(this.state.currentCategory.toLowerCase()));
+        
+        return categoryMatch || sportMatch || tagMatch;
+      });
     }
     
     // Apply search filter if there's a query
@@ -1512,9 +1543,12 @@ class WatchApp {
       const query = this.state.searchQuery.toLowerCase();
       filteredVideos = filteredVideos.filter(video => 
         video.title.toLowerCase().includes(query) ||
-        video.description.toLowerCase().includes(query) ||
-        video.category.toLowerCase().includes(query) ||
-        video.tags.some(tag => tag.toLowerCase().includes(query))
+        (video.description && video.description.toLowerCase().includes(query)) ||
+        (video.sport && video.sport.toLowerCase().includes(query)) ||
+        (Array.isArray(video.category) 
+          ? video.category.some(cat => cat.toLowerCase().includes(query))
+          : (video.category && video.category.toLowerCase().includes(query))) ||
+        (video.tags && video.tags.some(tag => tag.toLowerCase().includes(query)))
       );
     }
     
@@ -1593,6 +1627,11 @@ class WatchApp {
     
     if (!liveStreamsGrid) return;
     
+    if (this.state.liveStreams.length === 0) {
+      this.showFallbackLiveStreams();
+      return;
+    }
+    
     // Apply search filter if there's a query
     let filteredStreams = this.state.liveStreams;
     
@@ -1600,9 +1639,22 @@ class WatchApp {
       const query = this.state.searchQuery.toLowerCase();
       filteredStreams = this.state.liveStreams.filter(stream => 
         stream.title.toLowerCase().includes(query) ||
-        stream.description.toLowerCase().includes(query) ||
-        stream.sport.toLowerCase().includes(query)
+        (stream.description && stream.description.toLowerCase().includes(query)) ||
+        (stream.sport && stream.sport.toLowerCase().includes(query))
       );
+    }
+    
+    // Apply category filter to live streams
+    if (this.state.currentCategory !== 'all') {
+      filteredStreams = filteredStreams.filter(stream => {
+        const sportMatch = stream.sport && 
+          stream.sport.toLowerCase().includes(this.state.currentCategory.toLowerCase());
+        
+        const categoryMatch = stream.category && 
+          stream.category.toLowerCase().includes(this.state.currentCategory.toLowerCase());
+        
+        return sportMatch || categoryMatch;
+      });
     }
     
     if (filteredStreams.length === 0) {
@@ -1675,23 +1727,27 @@ class WatchApp {
       rugby: '🏉',
       formula1: '🏎️',
       boxing: '🥊',
-      mma: '🥋'
+      mma: '🥋',
+      golf: '⛳'
     };
     
     return icons[sport] || '🏆';
   }
 
   formatSportName(sport) {
+    if (!sport) return 'Sports';
     return sport.charAt(0).toUpperCase() + sport.slice(1);
   }
 
   parseViews(viewsStr) {
+    if (!viewsStr) return 0;
+    if (typeof viewsStr === 'number') return viewsStr;
     if (viewsStr.includes('M')) {
       return parseFloat(viewsStr) * 1000000;
     } else if (viewsStr.includes('K')) {
       return parseFloat(viewsStr) * 1000;
     }
-    return parseInt(viewsStr);
+    return parseInt(viewsStr) || 0;
   }
 
   async playVideo(video) {
@@ -1835,7 +1891,7 @@ class WatchApp {
       
       // Hide search results when clicking outside
       document.addEventListener('click', (e) => {
-        if (!searchInput.contains(e.target) && !searchResultsContainer.contains(e.target)) {
+        if (searchInput && !searchInput.contains(e.target) && searchResultsContainer && !searchResultsContainer.contains(e.target)) {
           searchResultsContainer.classList.remove('active');
         }
       });
@@ -1859,20 +1915,26 @@ class WatchApp {
 
   updateSearchFilters() {
     this.state.searchFilters = {
-      sport: document.getElementById('sportFilter').value,
-      category: document.getElementById('categoryFilter').value,
-      duration: document.getElementById('durationFilter').value,
-      date: document.getElementById('dateFilter').value,
-      sort: document.getElementById('sortFilter').value
+      sport: document.getElementById('sportFilter')?.value || 'all',
+      category: document.getElementById('categoryFilter')?.value || 'all',
+      duration: document.getElementById('durationFilter')?.value || 'all',
+      date: document.getElementById('dateFilter')?.value || 'all',
+      sort: document.getElementById('sortFilter')?.value || 'relevance'
     };
   }
 
   resetSearchFilters() {
-    document.getElementById('sportFilter').value = 'all';
-    document.getElementById('categoryFilter').value = 'all';
-    document.getElementById('durationFilter').value = 'all';
-    document.getElementById('dateFilter').value = 'all';
-    document.getElementById('sortFilter').value = 'relevance';
+    const sportFilter = document.getElementById('sportFilter');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const durationFilter = document.getElementById('durationFilter');
+    const dateFilter = document.getElementById('dateFilter');
+    const sortFilter = document.getElementById('sortFilter');
+    
+    if (sportFilter) sportFilter.value = 'all';
+    if (categoryFilter) categoryFilter.value = 'all';
+    if (durationFilter) durationFilter.value = 'all';
+    if (dateFilter) dateFilter.value = 'all';
+    if (sortFilter) sortFilter.value = 'relevance';
     
     this.updateSearchFilters();
     this.performSearch();
@@ -1886,7 +1948,9 @@ class WatchApp {
       this.state.searchQuery = searchInput.value.trim();
       
       // Hide search results
-      searchResultsContainer.classList.remove('active');
+      if (searchResultsContainer) {
+        searchResultsContainer.classList.remove('active');
+      }
       
       // Update the videos and streams based on search
       this.renderVideos();
@@ -1913,15 +1977,18 @@ class WatchApp {
     // Find matching videos and streams
     const videoResults = this.state.videos.filter(video => 
       video.title.toLowerCase().includes(query) ||
-      video.description.toLowerCase().includes(query) ||
-      video.category.toLowerCase().includes(query) ||
-      video.tags.some(tag => tag.toLowerCase().includes(query))
+      (video.description && video.description.toLowerCase().includes(query)) ||
+      (video.sport && video.sport.toLowerCase().includes(query)) ||
+      (Array.isArray(video.category) 
+        ? video.category.some(cat => cat.toLowerCase().includes(query))
+        : (video.category && video.category.toLowerCase().includes(query))) ||
+      (video.tags && video.tags.some(tag => tag.toLowerCase().includes(query)))
     );
     
     const streamResults = this.state.liveStreams.filter(stream => 
       stream.title.toLowerCase().includes(query) ||
-      stream.description.toLowerCase().includes(query) ||
-      stream.sport.toLowerCase().includes(query)
+      (stream.description && stream.description.toLowerCase().includes(query)) ||
+      (stream.sport && stream.sport.toLowerCase().includes(query))
     );
     
     const allResults = [...videoResults, ...streamResults];
@@ -1952,7 +2019,7 @@ class WatchApp {
             <div class="search-result-content">
               <div class="search-result-title">${result.title}</div>
               <div class="search-result-meta">
-                ${icon} ${type} • ${isStream ? result.viewers + ' viewers' : result.views}
+                ${icon} ${type} • ${isStream ? (result.viewers || '0') + ' viewers' : (result.views || '0')}
               </div>
             </div>
             <div class="search-result-type">${type}</div>
@@ -1982,7 +2049,7 @@ class WatchApp {
           }
           
           searchResultsContainer.classList.remove('active');
-          searchInput.value = '';
+          if (searchInput) searchInput.value = '';
         });
       });
     }
@@ -2090,7 +2157,7 @@ class WatchApp {
       });
     }
     
-    // Video category filters
+    // Video category filters - FIXED: Now properly updates both videos and live streams
     const videoCategories = document.querySelectorAll('.video-category');
     videoCategories.forEach(category => {
       category.addEventListener('click', () => {
@@ -2100,7 +2167,10 @@ class WatchApp {
         
         // Update current category
         this.state.currentCategory = category.dataset.category;
-        this.loadVideos();
+        
+        // Re-render both videos and live streams with the new filter
+        this.renderVideos();
+        this.renderLiveStreams();
       });
     });
     
@@ -2141,7 +2211,7 @@ class WatchApp {
     
     // Close modal on Escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && videoModal.style.display === 'flex') {
+      if (e.key === 'Escape' && videoModal && videoModal.style.display === 'flex') {
         this.closeVideoModal();
       }
     });
@@ -2182,12 +2252,38 @@ class WatchApp {
 
   // Fallback methods in case API fails
   showFallbackData() {
-    this.state.videos = [];
-    this.renderVideos();
-  }
-
-  showFallbackLiveStreams() {
-    this.state.liveStreams = [];
+    // Sample video data for fallback
+    this.state.videos = [
+      {
+        videoId: 'v1',
+        title: 'Manchester United vs Chelsea - Premier League Highlights',
+        thumbnail: 'https://i.pinimg.com/1200x/1a/e8/dd/1ae8ddb20fe93a6dec8e20ece6da259e.jpg',
+        youtubeId: 'z0I8LF4oCKw',
+        duration: '12:34',
+        views: '1.2M',
+        publishedAt: '2 hours ago',
+        category: 'football',
+        tags: ['highlights'],
+        sport: 'football',
+        description: 'Watch the thrilling encounter between Manchester United and Chelsea',
+        type: 'video'
+      },
+      {
+        videoId: 'ls3',
+        title: 'ICC World Cup: India vs Pakistan - LIVE',
+        thumbnail: 'https://i.pinimg.com/1200x/72/75/cb/7275cbc36e4dece4e59a3f47d4cc4906.jpg',
+        youtubeId: 'fTyeo4zqb-o',
+        viewers: '1.2M',
+        publishedAt: 'Live now',
+        category: 'cricket',
+        tags: ['live'],
+        sport: 'cricket',
+        description: 'The biggest rivalry in cricket - live from MCG',
+        type: 'live',
+        status: 'live',
+        views: '0'
+      }
+    ];
     this.renderLiveStreams();
   }
 

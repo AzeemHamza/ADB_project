@@ -139,7 +139,7 @@
     background-repeat: no-repeat;
     background-size: 370px auto;   /* width = 150px */
     background-position: center;
-    height: 200px;
+    height: 300px;
     }
     
     .player-card-info {
@@ -593,20 +593,12 @@
           <a role="menuitem" href="fixtures.html" class="nav-link">Fixtures</a>
         </li>
         
-        <!-- More Dropdown -->
-        <li role="none" class="has-dropdown" aria-haspopup="true">
-          <button class="nav-link nav-button" aria-controls="moreMenu" aria-haspopup="true" aria-expanded="false">
-            More <span class="caret">▾</span>
-          </button>
-          <div id="moreMenu" class="dropdown" role="menu" aria-hidden="true">
-            <a role="menuitem" href="more/podcasts.html" class="dropdown-item">Podcasts</a>
-            <a role="menuitem" href="more/highlights.html" class="dropdown-item">Video Highlights</a>
-            <a role="menuitem" href="more/news-archive.html" class="dropdown-item">News Archive</a>
-            <a role="menuitem" href="more/statistics.html" class="dropdown-item">Statistics</a>
-            <a role="menuitem" href="more/transfers.html" class="dropdown-item">Transfers</a>
-            <a role="menuitem" href="more/injury-news.html" class="dropdown-item">Injury News</a>
-          </div>
+         <!-- Profile Link -->
+        <li role="none">
+          <a role="menuitem" href="profile.html" class="nav-link nav-active" aria-current="page">Profile</a>
         </li>
+      </ul>
+    </nav>
       </ul>
     </nav>
 
@@ -762,485 +754,7 @@
 
   <!-- Players Grid -->
   <div class="players-grid" id="playersGrid">
-    <!-- Cristiano Ronaldo -->
-    <div class="player-card" data-player-id="cristiano-ronaldo" data-sport="football">
-      <button class="player-follow-btn" data-player="cristiano-ronaldo" data-player-name="Cristiano Ronaldo" data-sport="Football" data-position="Forward" data-team="Al Nassr" data-nationality="Portugal" data-image="https://i.pinimg.com/736x/2e/b8/83/2eb883d1d16f293bcb5b0e745da4e883.jpg">Follow</button>
-      <button class="player-pin-btn" data-player="cristiano-ronaldo"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/736x/4d/31/c2/4d31c23e3637fcdcf25ffcbc514f8c5c.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Cristiano Ronaldo</h3>
-        <div class="player-card-sport">⚽ Football • Forward</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇵🇹 Portugal</div>
-          <div class="player-card-club">Al Nassr</div>
-        </div>
-        <p>Widely regarded as one of the greatest players of all time, Ronaldo has won five Ballon d'Or awards and four European Golden Shoes.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">5</div>
-            <div class="player-card-stat-label">Ballon d'Or</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">850+</div>
-            <div class="player-card-stat-label">Goals</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">34</div>
-            <div class="player-card-stat-label">Trophies</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lionel Messi -->
-    <div class="player-card" data-player-id="lionel-messi" data-sport="football">
-      <button class="player-follow-btn" data-player="lionel-messi" data-player-name="Lionel Messi" data-sport="Football" data-position="Forward" data-team="Inter Miami" data-nationality="Argentina" data-image="https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="lionel-messi"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/736x/06/d6/a8/06d6a831a4eff7082d0be847f7254325.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Lionel Messi</h3>
-        <div class="player-card-sport">⚽ Football • Forward</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇦🇷 Argentina</div>
-          <div class="player-card-club">Inter Miami</div>
-        </div>
-        <p>Considered one of the greatest players of all time, Messi has won a record eight Ballon d'Or awards.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">8</div>
-            <div class="player-card-stat-label">Ballon d'Or</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">800+</div>
-            <div class="player-card-stat-label">Goals</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">38</div>
-            <div class="player-card-stat-label">Trophies</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Imran Khan -->
-    <div class="player-card" data-player-id="imran-khan" data-sport="cricket">
-      <button class="player-follow-btn" data-player="imran-khan" data-player-name="Imran Khan" data-sport="Cricket" data-position="All-rounder" data-team="Pakistan" data-nationality="Pakistan" data-image="https://i.pinimg.com/736x/9f/5f/8b/9f5f8b5a0a8c2a5d5a5e5c5a5a5e5c5a.jpg">Follow</button>
-      <button class="player-pin-btn" data-player="imran-khan"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://media.gettyimages.com/id/79649595/photo/july-1987-4th-cornhill-test-match-at-edgbaston-england-v-pakistan-imran-khan-pakistan-imran.jpg?s=612x612&w=gi&k=20&c=_pTus-bMeA0ZqB8o6PwIby7sHlmWivYQWp8ktaJXBNg=')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Imran Khan</h3>
-        <div class="player-card-sport">🏏 Cricket • All-rounder</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇵🇰 Pakistan</div>
-          <div class="player-card-club">Pakistan</div>
-        </div>
-        <p>Legendary cricketer who captained Pakistan to their first World Cup victory in 1992. Later became Prime Minister of Pakistan.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">1992</div>
-            <div class="player-card-stat-label">World Cup</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">3807</div>
-            <div class="player-card-stat-label">Test Runs</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">362</div>
-            <div class="player-card-stat-label">Wickets</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LeBron James -->
-    <div class="player-card" data-player-id="lebron-james" data-sport="basketball">
-      <button class="player-follow-btn" data-player="lebron-james" data-player-name="LeBron James" data-sport="Basketball" data-position="Forward" data-team="Los Angeles Lakers" data-nationality="USA" data-image="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="lebron-james"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/1200x/df/1b/8b/df1b8b1cecf4f8462348775a9954ba9e.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">LeBron James</h3>
-        <div class="player-card-sport">🏀 Basketball • Forward</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇺🇸 USA</div>
-          <div class="player-card-club">Los Angeles Lakers</div>
-        </div>
-        <p>Widely considered one of the greatest basketball players of all time, often compared to Michael Jordan.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">4</div>
-            <div class="player-card-stat-label">NBA Titles</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">4</div>
-            <div class="player-card-stat-label">MVP Awards</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">40K+</div>
-            <div class="player-card-stat-label">Points</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Virat Kohli -->
-    <div class="player-card" data-player-id="virat-kohli" data-sport="cricket">
-      <button class="player-follow-btn" data-player="virat-kohli" data-player-name="Virat Kohli" data-sport="Cricket" data-position="Batsman" data-team="Royal Challengers" data-nationality="India" data-image="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="virat-kohli"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/1200x/6e/e5/c7/6ee5c799d76bf37fc35d26e55acc8cf0.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Virat Kohli</h3>
-        <div class="player-card-sport">🏏 Cricket • Batsman</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇮🇳 India</div>
-          <div class="player-card-club">Royal Challengers</div>
-        </div>
-        <p>Considered one of the best batsmen in the world, known for his aggressive batting style and consistency.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">80</div>
-            <div class="player-card-stat-label">Int'l 100s</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">13K+</div>
-            <div class="player-card-stat-label">ODI Runs</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">50+</div>
-            <div class="player-card-stat-label">Avg</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Novak Djokovic -->
-    <div class="player-card" data-player-id="novak-djokovic" data-sport="tennis">
-      <button class="player-follow-btn" data-player="novak-djokovic" data-player-name="Novak Djokovic" data-sport="Tennis" data-position="Professional" data-team="ATP Tour" data-nationality="Serbia" data-image="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="novak-djokovic"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/1200x/02/1b/20/021b207a88e4a565c0124737d7c839b2.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Novak Djokovic</h3>
-        <div class="player-card-sport">🎾 Tennis</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇷🇸 Serbia</div>
-          <div class="player-card-club">ATP Tour</div>
-        </div>
-        <p>Regarded as one of the greatest tennis players of all time, holds numerous records including most Grand Slam titles.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">24</div>
-            <div class="player-card-stat-label">Grand Slams</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">389</div>
-            <div class="player-card-stat-label">Weeks #1</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">94</div>
-            <div class="player-card-stat-label">Titles</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Muhammad Ali -->
-    <div class="player-card" data-player-id="muhammad-ali" data-sport="boxing">
-      <button class="player-follow-btn" data-player="muhammad-ali" data-player-name="Muhammad Ali" data-sport="Boxing" data-position="Heavyweight" data-team="Retired" data-nationality="USA" data-image="https://images.unsplash.com/photo-1541258344051-3e5c6f8b7e7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="muhammad-ali"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/1200x/d1/3e/b2/d13eb2c1b376a861438b8ca0c0884a1c.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Muhammad Ali</h3>
-        <div class="player-card-sport">🥊 Boxing • Heavyweight</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇺🇸 USA</div>
-          <div class="player-card-club">Retired</div>
-        </div>
-        <p>Widely regarded as one of the most significant and celebrated sports figures of the 20th century.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">56</div>
-            <div class="player-card-stat-label">Wins</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">37</div>
-            <div class="player-card-stat-label">KOs</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">3</div>
-            <div class="player-card-stat-label">World Titles</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lewis Hamilton -->
-    <div class="player-card" data-player-id="lewis-hamilton" data-sport="formula1">
-      <button class="player-follow-btn" data-player="lewis-hamilton" data-player-name="Lewis Hamilton" data-sport="Formula 1" data-position="Driver" data-team="Mercedes" data-nationality="Great Britain" data-image="https://images.unsplash.com/photo-1583391737656-2c53ef6e6c1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="lewis-hamilton"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/1200x/d3/ca/2e/d3ca2e3e794508c0835ae6066d0c13db.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Lewis Hamilton</h3>
-        <div class="player-card-sport">🏎️ Formula 1 • Driver</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇬🇧 Great Britain</div>
-          <div class="player-card-club">Mercedes</div>
-        </div>
-        <p>One of the most successful drivers in the history of Formula One, holding the records for most wins and pole positions.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">7</div>
-            <div class="player-card-stat-label">World Titles</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">103</div>
-            <div class="player-card-stat-label">Wins</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">104</div>
-            <div class="player-card-stat-label">Pole Positions</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Roger Federer -->
-    <div class="player-card" data-player-id="roger-federer" data-sport="tennis">
-      <button class="player-follow-btn" data-player="roger-federer" data-player-name="Roger Federer" data-sport="Tennis" data-position="Professional" data-team="ATP Tour" data-nationality="Switzerland" data-image="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="roger-federer"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/1200x/56/23/14/562314e91ee627a7e6962740bda156cc.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Roger Federer</h3>
-        <div class="player-card-sport">🎾 Tennis</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇨🇭 Switzerland</div>
-          <div class="player-card-club">ATP Tour</div>
-        </div>
-        <p>Regarded as one of the greatest tennis players of all time, known for his elegant playing style and sportsmanship.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">20</div>
-            <div class="player-card-stat-label">Grand Slams</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">310</div>
-            <div class="player-card-stat-label">Weeks #1</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">103</div>
-            <div class="player-card-stat-label">Titles</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tiger Woods -->
-    <div class="player-card" data-player-id="tiger-woods" data-sport="golf">
-      <button class="player-follow-btn" data-player="tiger-woods" data-player-name="Tiger Woods" data-sport="Golf" data-position="Professional" data-team="PGA Tour" data-nationality="USA" data-image="https://images.unsplash.com/photo-1592923569853-3c8b6f9b4c0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="tiger-woods"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/736x/89/3d/64/893d64b092de3b4f2bb8ef592ff13025.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Tiger Woods</h3>
-        <div class="player-card-sport">⛳ Golf</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇺🇸 USA</div>
-          <div class="player-card-club">PGA Tour</div>
-        </div>
-        <p>Widely regarded as one of the greatest golfers of all time and one of the most famous athletes in modern history.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">15</div>
-            <div class="player-card-stat-label">Majors</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">82</div>
-            <div class="player-card-stat-label">PGA Wins</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">683</div>
-            <div class="player-card-stat-label">Weeks #1</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Usain Bolt -->
-    <div class="player-card" data-player-id="usain-bolt" data-sport="athletics">
-      <button class="player-follow-btn" data-player="usain-bolt" data-player-name="Usain Bolt" data-sport="Athletics" data-position="Sprinter" data-team="Retired" data-nationality="Jamaica" data-image="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="usain-bolt"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/736x/bb/ae/46/bbae46f251c7c52ea0c377e6f02deb2c.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Usain Bolt</h3>
-        <div class="player-card-sport">🏃 Athletics • Sprinter</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇯🇲 Jamaica</div>
-          <div class="player-card-club">Retired</div>
-        </div>
-        <p>Widely considered the greatest sprinter of all time, holding world records in the 100m, 200m and 4×100m relay.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">8</div>
-            <div class="player-card-stat-label">Olympic Gold</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">11</div>
-            <div class="player-card-stat-label">World Titles</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">9.58</div>
-            <div class="player-card-stat-label">100m WR</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Michael Phelps -->
-    <div class="player-card" data-player-id="michael-phelps" data-sport="swimming">
-      <button class="player-follow-btn" data-player="michael-phelps" data-player-name="Michael Phelps" data-sport="Swimming" data-position="Swimmer" data-team="Retired" data-nationality="USA" data-image="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="michael-phelps"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/1200x/9f/59/29/9f592979e12ea1576fff9c135293fd08.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Michael Phelps</h3>
-        <div class="player-card-sport">🏊 Swimming</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇺🇸 USA</div>
-          <div class="player-card-club">Retired</div>
-        </div>
-        <p>The most successful and most decorated Olympian of all time, with a total of 28 medals, 23 of them gold.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">23</div>
-            <div class="player-card-stat-label">Olympic Gold</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">28</div>
-            <div class="player-card-stat-label">Olympic Medals</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">39</div>
-            <div class="player-card-stat-label">World Records</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Serena Williams -->
-    <div class="player-card" data-player-id="serena-williams" data-sport="tennis">
-      <button class="player-follow-btn" data-player="serena-williams" data-player-name="Serena Williams" data-sport="Tennis" data-position="Professional" data-team="WTA Tour" data-nationality="USA" data-image="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="serena-williams"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/1200x/95/78/10/957810425f9c92383336e21af1dd1409.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Serena Williams</h3>
-        <div class="player-card-sport">🎾 Tennis</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇺🇸 USA</div>
-          <div class="player-card-club">WTA Tour</div>
-        </div>
-        <p>Regarded as one of the greatest tennis players of all time, holding the most Grand Slam titles in the Open Era.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">23</div>
-            <div class="player-card-stat-label">Grand Slams</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">319</div>
-            <div class="player-card-stat-label">Weeks #1</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">73</div>
-            <div class="player-card-stat-label">Titles</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tom Brady -->
-    <div class="player-card" data-player-id="tom-brady" data-sport="football">
-      <button class="player-follow-btn" data-player="tom-brady" data-player-name="Tom Brady" data-sport="American Football" data-position="Quarterback" data-team="Retired" data-nationality="USA" data-image="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">Follow</button>
-      <button class="player-pin-btn" data-player="tom-brady"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/1200x/41/54/fc/4154fcb14a326d98445ab0c6e202fa62.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Tom Brady</h3>
-        <div class="player-card-sport">🏈 American Football • QB</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇺🇸 USA</div>
-          <div class="player-card-club">Retired</div>
-        </div>
-        <p>Widely regarded as the greatest quarterback of all time, holding numerous NFL records including most Super Bowl wins.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">7</div>
-            <div class="player-card-stat-label">Super Bowls</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">5</div>
-            <div class="player-card-stat-label">MVP Awards</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">89K+</div>
-            <div class="player-card-stat-label">Passing Yards</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Islam Makhachev -->
-    <div class="player-card" data-player-id="islam-makhachev" data-sport="mma">
-      <button class="player-follow-btn" data-player="islam-makhachev" data-player-name="Islam Makhachev" data-sport="MMA" data-position="Lightweight" data-team="American Kickboxing Academy" data-nationality="Russia" data-image="https://i.pinimg.com/736x/4d/31/c2/4d31c23e3637fcdcf25ffcbc514f8c5c.jpg">Follow</button>
-      <button class="player-pin-btn" data-player="islam-makhachev"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://pbs.twimg.com/media/G54a06EaQAAE040.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Islam Makhachev</h3>
-        <div class="player-card-sport">🥋 MMA • Lightweight</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇷🇺 Russia</div>
-          <div class="player-card-club">American Kickboxing Academy</div>
-        </div>
-        <p>Current UFC Lightweight Champion and one of the most dominant fighters in the division, known for his elite grappling skills.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">28</div>
-            <div class="player-card-stat-label">Wins</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">18</div>
-            <div class="player-card-stat-label">Finishes</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">1</div>
-            <div class="player-card-stat-label">Loss</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Khabib Nurmagomedov -->
-    <div class="player-card" data-player-id="khabib-nurmagomedov" data-sport="mma">
-      <button class="player-follow-btn" data-player="khabib-nurmagomedov" data-player-name="Khabib Nurmagomedov" data-sport="MMA" data-position="Lightweight" data-team="Retired" data-nationality="Russia" data-image="https://i.pinimg.com/736x/4d/31/c2/4d31c23e3637fcdcf25ffcbc514f8c5c.jpg">Follow</button>
-      <button class="player-pin-btn" data-player="khabib-nurmagomedov"><i class="fas fa-thumbtack"></i> Pin</button>
-      <div class="player-card-image" style="background-image: url('https://i.pinimg.com/736x/38/f2/e7/38f2e720e446e79fd20cc1ea14dd4473.jpg')"></div>
-      <div class="player-card-info">
-        <h3 class="player-card-name">Khabib Nurmagomedov</h3>
-        <div class="player-card-sport">🥋 MMA • Lightweight</div>
-        <div class="player-card-meta">
-          <div class="player-card-country">🇷🇺 Russia</div>
-          <div class="player-card-club">Retired</div>
-        </div>
-        <p>Former UFC Lightweight Champion, widely considered one of the greatest MMA fighters of all time with an undefeated record.</p>
-        <div class="player-card-stats">
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">29</div>
-            <div class="player-card-stat-label">Wins</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">0</div>
-            <div class="player-card-stat-label">Losses</div>
-          </div>
-          <div class="player-card-stat">
-            <div class="player-card-stat-value">8</div>
-            <div class="player-card-stat-label">Submissions</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Players will be dynamically loaded from database -->
   </div>
 
   <!-- Load More -->
@@ -1334,9 +848,9 @@ class PlayersApp {
     console.log('Players App Initializing...');
     await this.checkAuthStatus();
     await this.loadFollowedPlayers();
-    this.loadPinnedPlayer();
-    this.setupEventListeners();
+    await this.loadUserPinnedPlayer(); // Load pinned player from user data
     await this.loadPlayersFromDatabase();
+    this.setupEventListeners();
     this.setupPlayerFunctionality();
     this.updateFollowButtons();
     this.updatePinButtons();
@@ -1354,11 +868,25 @@ class PlayersApp {
       if (data.success) {
         this.playersData = {};
         data.players.forEach(player => {
-          this.playersData[player._id] = {
+          // Use a consistent ID - prefer playerId if it exists, otherwise use _id
+          const playerId = player.playerId || player._id;
+          
+          this.playersData[playerId] = {
             ...player,
-            id: player._id,
+            id: playerId,
             sportIcon: this.getSportIcon(player.sport),
-            nationalityFlag: this.getCountryFlag(player.nationality)
+            nationalityFlag: this.getCountryFlag(player.nationality),
+            // Ensure we have all required fields with fallbacks
+            name: player.name || 'Unknown Player',
+            sport: player.sport || 'Unknown Sport',
+            position: player.position || 'Unknown Position',
+            nationality: player.nationality || 'Unknown',
+            currentClub: player.currentClub || 'Unknown Club',
+            image: player.image || 'https://via.placeholder.com/400x400?text=Player',
+            description: player.description || 'Professional athlete',
+            stats: player.stats || {},
+            trophies: player.trophies || {},
+            career: player.career || []
           };
         });
         
@@ -1374,6 +902,66 @@ class PlayersApp {
       console.error('Error loading players from database:', error);
       // Fallback to default players
       this.loadDefaultPlayers();
+    }
+  }
+
+  // ========== USER PINNED PLAYER METHODS ==========
+  async loadUserPinnedPlayer() {
+    try {
+      if (!this.state.user) {
+        console.log('No user logged in, skipping pinned player load');
+        return;
+      }
+
+      const response = await fetch('/api/user/pinned-player');
+      const data = await response.json();
+      
+      if (data.success) {
+        this.state.pinnedPlayerId = data.pinnedPlayerId;
+        console.log('Loaded user pinned player:', this.state.pinnedPlayerId);
+      } else {
+        console.log('No pinned player found for user');
+        this.state.pinnedPlayerId = null;
+      }
+    } catch (error) {
+      console.error('Error loading user pinned player:', error);
+      this.state.pinnedPlayerId = null;
+    }
+  }
+
+  async updateUserPinnedPlayer(playerId) {
+    try {
+      if (!this.state.user) {
+        this.showToast('Please log in to pin players');
+        return false;
+      }
+
+      const response = await fetch('/api/user/pinned-player', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          playerId: playerId,
+          action: playerId ? 'pin' : 'unpin'
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        this.state.pinnedPlayerId = playerId;
+        console.log('Updated user pinned player:', playerId);
+        return true;
+      } else {
+        console.error('Failed to update pinned player:', data.message);
+        this.showToast(data.message || 'Error updating pinned player');
+        return false;
+      }
+    } catch (error) {
+      console.error('Error updating pinned player:', error);
+      this.showToast('Server error. Please try again.');
+      return false;
     }
   }
 
@@ -1429,10 +1017,17 @@ class PlayersApp {
 
     playersGrid.innerHTML = Object.keys(this.playersData).map(playerId => {
       const player = this.playersData[playerId];
+      
+      // Ensure we have basic player data
+      if (!player || !player.name) {
+        console.warn('Invalid player data:', playerId, player);
+        return '';
+      }
+      
       const stats = Object.entries(player.stats || {}).slice(0, 3);
       
       return `
-        <div class="player-card" data-player-id="${playerId}" data-sport="${player.sport.toLowerCase()}">
+        <div class="player-card" data-player-id="${playerId}" data-sport="${(player.sport || '').toLowerCase()}">
           <button class="player-follow-btn" data-player="${playerId}" 
                   data-player-name="${player.name}" data-sport="${player.sport}" 
                   data-position="${player.position}" data-team="${player.currentClub}" 
@@ -1450,19 +1045,204 @@ class PlayersApp {
               <div class="player-card-country">${player.nationalityFlag} ${player.nationality}</div>
               <div class="player-card-club">${player.currentClub}</div>
             </div>
-            <p>${player.description || 'Professional athlete'}</p>
+            <p>${player.description}</p>
             <div class="player-card-stats">
-              ${stats.map(([key, value]) => `
+              ${stats.length > 0 ? stats.map(([key, value]) => `
                 <div class="player-card-stat">
                   <div class="player-card-stat-value">${value}</div>
                   <div class="player-card-stat-label">${key}</div>
                 </div>
-              `).join('')}
+              `).join('') : `
+                <div class="player-card-stat">
+                  <div class="player-card-stat-value">-</div>
+                  <div class="player-card-stat-label">No Stats</div>
+                </div>
+              `}
             </div>
           </div>
         </div>
       `;
     }).join('');
+  }
+
+  // ========== PINNING FUNCTIONALITY ==========
+  updatePinButtons() {
+    const pinButtons = document.querySelectorAll('.player-pin-btn');
+    
+    pinButtons.forEach(button => {
+      const playerId = button.dataset.player;
+      const isPinned = this.state.pinnedPlayerId === playerId;
+      
+      if (isPinned) {
+        button.classList.add('pinned');
+        button.innerHTML = '<i class="fas fa-thumbtack"></i> Pinned';
+      } else {
+        button.classList.remove('pinned');
+        button.innerHTML = '<i class="fas fa-thumbtack"></i> Pin';
+      }
+    });
+  }
+
+  async pinPlayer(playerId) {
+    if (!this.state.user) {
+      this.showToast('Please log in to pin players');
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 1500);
+      return;
+    }
+
+    // If clicking the same pinned player, unpin it
+    if (this.state.pinnedPlayerId === playerId) {
+      const success = await this.updateUserPinnedPlayer(null);
+      if (success) {
+        this.updatePinButtons();
+        this.renderPinnedPlayer();
+        this.showToast(`${this.getPlayerName(playerId)} has been unpinned`);
+      }
+      return;
+    }
+
+    // If no current pinned player, just pin the new one
+    if (!this.state.pinnedPlayerId) {
+      const success = await this.updateUserPinnedPlayer(playerId);
+      if (success) {
+        this.updatePinButtons();
+        this.renderPinnedPlayer();
+        this.showToast(`${this.getPlayerName(playerId)} is now pinned`);
+      }
+      return;
+    }
+
+    // If there's already a pinned player, show confirmation
+    this.pendingPinPlayerId = playerId;
+    this.showPinConfirmation();
+  }
+
+  getPlayerName(playerId) {
+    const player = this.playersData[playerId];
+    return player ? player.name : playerId;
+  }
+
+  showPinConfirmation() {
+    const modal = document.getElementById('pinConfirmationModal');
+    const currentPlayerName = this.getPlayerName(this.state.pinnedPlayerId);
+    const newPlayerName = this.getPlayerName(this.pendingPinPlayerId);
+    
+    const modalBody = modal.querySelector('.modal-body p');
+    modalBody.textContent = `You already have ${currentPlayerName} pinned. Pinning ${newPlayerName} will replace ${currentPlayerName}. Are you sure you want to continue?`;
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  async confirmPinSwap() {
+    if (this.pendingPinPlayerId) {
+      const oldPlayerName = this.getPlayerName(this.state.pinnedPlayerId);
+      const success = await this.updateUserPinnedPlayer(this.pendingPinPlayerId);
+      
+      if (success) {
+        this.updatePinButtons();
+        this.renderPinnedPlayer();
+        this.showToast(`${this.getPlayerName(this.pendingPinPlayerId)} is now pinned (replaced ${oldPlayerName})`);
+      }
+      this.pendingPinPlayerId = null;
+    }
+    this.closePinConfirmation();
+  }
+
+  closePinConfirmation() {
+    const modal = document.getElementById('pinConfirmationModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    this.pendingPinPlayerId = null;
+  }
+
+  renderPinnedPlayer() {
+    const heroContainer = document.getElementById('pinned-player-hero');
+    
+    if (!this.state.pinnedPlayerId) {
+      heroContainer.style.display = 'none';
+      return;
+    }
+    
+    const player = this.playersData[this.state.pinnedPlayerId];
+    if (!player) {
+      console.error('Pinned player not found:', this.state.pinnedPlayerId);
+      // Clear the invalid pinned player
+      this.state.pinnedPlayerId = null;
+      this.updatePinButtons();
+      heroContainer.style.display = 'none';
+      return;
+    }
+    
+    heroContainer.style.display = 'grid';
+    const stats = Object.entries(player.stats || {}).slice(0, 3);
+    
+    heroContainer.innerHTML = `
+      <div class="player-hero-image" style="background-image: url('${player.image}')">
+        <button class="player-pin-btn pinned" data-player="${this.state.pinnedPlayerId}">
+          <i class="fas fa-thumbtack"></i> Pinned
+        </button>
+      </div>
+      <div class="player-hero-info">
+        <div class="player-name">${player.name}</div>
+        <div class="player-sport">${player.sportIcon} ${player.sport} • ${player.position}</div>
+        <p>${player.description}</p>
+        
+        <div class="player-stats-grid">
+          ${stats.length > 0 ? stats.map(([key, value]) => `
+            <div class="player-stat-card">
+              <div class="player-stat-number">${value}</div>
+              <div class="player-stat-label">${key}</div>
+            </div>
+          `).join('') : `
+            <div class="player-stat-card">
+              <div class="player-stat-number">-</div>
+              <div class="player-stat-label">No Stats</div>
+            </div>
+          `}
+        </div>
+        
+        <div class="player-info-grid">
+          <div class="player-info-item">
+            <span class="player-info-label">Nationality:</span>
+            <span class="player-info-value">${player.nationalityFlag} ${player.nationality}</span>
+          </div>
+          <div class="player-info-item">
+            <span class="player-info-label">Current Club:</span>
+            <span class="player-info-value">${player.currentClub}</span>
+          </div>
+          <div class="player-info-item">
+            <span class="player-info-label">Age:</span>
+            <span class="player-info-value">${player.age || 'N/A'}</span>
+          </div>
+          <div class="player-info-item">
+            <span class="player-info-label">Height:</span>
+            <span class="player-info-value">${player.height || 'N/A'}</span>
+          </div>
+        </div>
+        
+        <div class="actions">
+          <button class="btn" id="viewPinnedPlayerDetails">View Full Profile</button>
+          <button class="btn ghost follow-btn" data-player="${this.state.pinnedPlayerId}" 
+                  data-player-name="${player.name}" data-sport="${player.sport}" 
+                  data-position="${player.position}" data-team="${player.currentClub}" 
+                  data-nationality="${player.nationality}" data-image="${player.image}">
+            Follow Player
+          </button>
+        </div>
+      </div>
+    `;
+    
+    const viewDetailsBtn = document.getElementById('viewPinnedPlayerDetails');
+    if (viewDetailsBtn) {
+      viewDetailsBtn.addEventListener('click', () => {
+        this.openPlayerModal(this.state.pinnedPlayerId);
+      });
+    }
+    
+    this.updateFollowButtons();
   }
 
   // ========== SEARCH FUNCTIONALITY ==========
@@ -1619,173 +1399,6 @@ class PlayersApp {
     }
   }
 
-  // ========== PINNING FUNCTIONALITY ==========
-  loadPinnedPlayer() {
-    const storedPinned = localStorage.getItem('pinnedPlayer');
-    if (storedPinned) {
-      this.state.pinnedPlayerId = storedPinned;
-    }
-  }
-
-  savePinnedPlayer() {
-    localStorage.setItem('pinnedPlayer', this.state.pinnedPlayerId);
-  }
-
-  updatePinButtons() {
-    const pinButtons = document.querySelectorAll('.player-pin-btn');
-    
-    pinButtons.forEach(button => {
-      const playerId = button.dataset.player;
-      const isPinned = this.state.pinnedPlayerId === playerId;
-      
-      if (isPinned) {
-        button.classList.add('pinned');
-        button.innerHTML = '<i class="fas fa-thumbtack"></i> Pinned';
-      } else {
-        button.classList.remove('pinned');
-        button.innerHTML = '<i class="fas fa-thumbtack"></i> Pin';
-      }
-    });
-  }
-
-  pinPlayer(playerId) {
-    if (!this.state.pinnedPlayerId) {
-      this.state.pinnedPlayerId = playerId;
-      this.savePinnedPlayer();
-      this.updatePinButtons();
-      this.renderPinnedPlayer();
-      this.showToast(`${this.getPlayerName(playerId)} is now pinned`);
-      return;
-    }
-    
-    if (this.state.pinnedPlayerId === playerId) {
-      this.state.pinnedPlayerId = null;
-      this.savePinnedPlayer();
-      this.updatePinButtons();
-      this.renderPinnedPlayer();
-      this.showToast(`${this.getPlayerName(playerId)} has been unpinned`);
-      return;
-    }
-    
-    this.pendingPinPlayerId = playerId;
-    this.showPinConfirmation();
-  }
-
-  getPlayerName(playerId) {
-    const player = this.playersData[playerId];
-    return player ? player.name : playerId;
-  }
-
-  showPinConfirmation() {
-    const modal = document.getElementById('pinConfirmationModal');
-    const currentPlayerName = this.getPlayerName(this.state.pinnedPlayerId);
-    const newPlayerName = this.getPlayerName(this.pendingPinPlayerId);
-    
-    const modalBody = modal.querySelector('.modal-body p');
-    modalBody.textContent = `You already have ${currentPlayerName} pinned. Pinning ${newPlayerName} will replace ${currentPlayerName}. Are you sure you want to continue?`;
-    
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  confirmPinSwap() {
-    if (this.pendingPinPlayerId) {
-      const oldPlayerName = this.getPlayerName(this.state.pinnedPlayerId);
-      this.state.pinnedPlayerId = this.pendingPinPlayerId;
-      this.savePinnedPlayer();
-      this.updatePinButtons();
-      this.renderPinnedPlayer();
-      this.showToast(`${this.getPlayerName(this.pendingPinPlayerId)} is now pinned (replaced ${oldPlayerName})`);
-      this.pendingPinPlayerId = null;
-    }
-    this.closePinConfirmation();
-  }
-
-  closePinConfirmation() {
-    const modal = document.getElementById('pinConfirmationModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-    this.pendingPinPlayerId = null;
-  }
-
-  renderPinnedPlayer() {
-    const heroContainer = document.getElementById('pinned-player-hero');
-    
-    if (!this.state.pinnedPlayerId) {
-      heroContainer.style.display = 'none';
-      return;
-    }
-    
-    const player = this.playersData[this.state.pinnedPlayerId];
-    if (!player) {
-      console.error('Pinned player not found:', this.state.pinnedPlayerId);
-      return;
-    }
-    
-    heroContainer.style.display = 'grid';
-    const stats = Object.entries(player.stats || {}).slice(0, 3);
-    
-    heroContainer.innerHTML = `
-      <div class="player-hero-image" style="background-image: url('${player.image}')">
-        <button class="player-pin-btn pinned" data-player="${this.state.pinnedPlayerId}">
-          <i class="fas fa-thumbtack"></i> Pinned
-        </button>
-      </div>
-      <div class="player-hero-info">
-        <div class="player-name">${player.name}</div>
-        <div class="player-sport">${player.sportIcon} ${player.sport} • ${player.position}</div>
-        <p>${player.description || 'Professional athlete'}</p>
-        
-        <div class="player-stats-grid">
-          ${stats.map(([key, value]) => `
-            <div class="player-stat-card">
-              <div class="player-stat-number">${value}</div>
-              <div class="player-stat-label">${key}</div>
-            </div>
-          `).join('')}
-        </div>
-        
-        <div class="player-info-grid">
-          <div class="player-info-item">
-            <span class="player-info-label">Nationality:</span>
-            <span class="player-info-value">${player.nationalityFlag} ${player.nationality}</span>
-          </div>
-          <div class="player-info-item">
-            <span class="player-info-label">Current Club:</span>
-            <span class="player-info-value">${player.currentClub}</span>
-          </div>
-          <div class="player-info-item">
-            <span class="player-info-label">Age:</span>
-            <span class="player-info-value">${player.age || 'N/A'}</span>
-          </div>
-          <div class="player-info-item">
-            <span class="player-info-label">Height:</span>
-            <span class="player-info-value">${player.height || 'N/A'}</span>
-          </div>
-        </div>
-        
-        <div class="actions">
-          <button class="btn" id="viewPinnedPlayerDetails">View Full Profile</button>
-          <button class="btn ghost follow-btn" data-player="${this.state.pinnedPlayerId}" 
-                  data-player-name="${player.name}" data-sport="${player.sport}" 
-                  data-position="${player.position}" data-team="${player.currentClub}" 
-                  data-nationality="${player.nationality}" data-image="${player.image}">
-            Follow Player
-          </button>
-        </div>
-      </div>
-    `;
-    
-    const viewDetailsBtn = document.getElementById('viewPinnedPlayerDetails');
-    if (viewDetailsBtn) {
-      viewDetailsBtn.addEventListener('click', () => {
-        this.openPlayerModal(this.state.pinnedPlayerId);
-      });
-    }
-    
-    this.updateFollowButtons();
-  }
-
   // ========== AUTHENTICATION METHODS ==========
   async checkAuthStatus() {
     try {
@@ -1798,12 +1411,14 @@ class PlayersApp {
         console.log('User authenticated:', this.state.user.username);
       } else {
         this.state.user = null;
+        this.state.pinnedPlayerId = null; // Clear pinned player when not logged in
         this.updateAuthUI();
         console.log('User not authenticated');
       }
     } catch (error) {
       console.error('Error checking auth status:', error);
       this.state.user = null;
+      this.state.pinnedPlayerId = null;
       this.updateAuthUI();
     }
   }
@@ -2020,8 +1635,11 @@ class PlayersApp {
       if (data.success) {
         this.state.user = null;
         this.state.followedPlayers = new Set();
+        this.state.pinnedPlayerId = null; // Clear pinned player on logout
         this.updateAuthUI();
         this.updateFollowButtons();
+        this.updatePinButtons();
+        this.renderPinnedPlayer();
         this.showToast('Successfully logged out');
         
         setTimeout(() => {
