@@ -2284,7 +2284,7 @@ app.post('/api/user/follow-player', async (req, res) => {
   }
 });
 
-// Follow/Unfollow Sport endpoint - FIXED VERSION
+// ========== FIXED FOLLOW SPORT ENDPOINT ==========
 app.post('/api/user/follow-sport', async (req, res) => {
   console.log('🔔 Follow sport request received:', req.body);
   
@@ -2296,7 +2296,7 @@ app.post('/api/user/follow-sport', async (req, res) => {
     });
   }
 
-  const { sportId, sportName, category, icon, description, popularity, action } = req.body;
+  const { sportId, sportName, icon = '🏆', action } = req.body;
 
   console.log('📋 Follow sport request details:', {
     sessionUser: req.session.user,
@@ -2305,7 +2305,6 @@ app.post('/api/user/follow-sport', async (req, res) => {
     action
   });
 
-  // FIX: Check for required fields - only sportId and action are required
   if (!sportId || !action) {
     return res.status(400).json({
       success: false,
@@ -2315,67 +2314,68 @@ app.post('/api/user/follow-sport', async (req, res) => {
 
   const sportIdStr = String(sportId);
   
-  let update;
-  let message;
-  let responseAction;
-
-  if (action === 'follow') {
-    // FIX: Make sportName optional and provide fallback
-    const finalSportName = sportName || sportIdStr.charAt(0).toUpperCase() + sportIdStr.slice(1);
-    
-    update = {
-      $addToSet: {
-        followedSports: { 
-          sportId: sportIdStr, 
-          sportName: finalSportName, 
-          category: category || 'General',
-          icon: icon || '🏆',
-          description: description || `${finalSportName} - Sports coverage`,
-          popularity: popularity || 1,
-          followedAt: new Date()
-        }
-      }
-    };
-    message = `You are now following ${finalSportName}`;
-    responseAction = 'followed';
-  } else if (action === 'unfollow') {
-    update = {
-      $pull: {
-        followedSports: { sportId: sportIdStr }
-      }
-    };
-    message = `You have unfollowed ${sportName || 'the sport'}`;
-    responseAction = 'unfollowed';
-  } else {
-    return res.status(400).json({
-      success: false,
-      message: 'Invalid action. Use "follow" or "unfollow"'
-    });
-  }
-
   try {
-    const result = await User.updateOne(
-      { _id: req.session.user.id },
-      update
-    );
-
-    console.log('📊 Follow sport update result:', result);
-
-    if (result.matchedCount === 0) {
-      console.log('❌ User not found during follow sport update');
+    const user = await User.findById(req.session.user.id);
+    if (!user) {
       return res.status(404).json({
         success: false,
         message: 'User not found'
       });
     }
 
-    console.log(`✅ Sport ${action}ed successfully. Modified: ${result.modifiedCount}`);
+    // Initialize followedSports array if it doesn't exist
+    if (!user.followedSports) {
+      user.followedSports = [];
+    }
+
+    let message = '';
+    let updated = false;
+
+    if (action === 'follow') {
+      // Check if already following
+      const alreadyFollowing = user.followedSports.some(
+        sport => sport.sportId === sportIdStr
+      );
+      
+      if (!alreadyFollowing) {
+        user.followedSports.push({
+          sportId: sportIdStr,
+          sportName: sportName || sportIdStr,
+          icon: icon,
+          followedAt: new Date()
+        });
+        updated = true;
+        message = `You are now following ${sportName || sportIdStr}`;
+      } else {
+        message = `Already following ${sportName || sportIdStr}`;
+      }
+    } else if (action === 'unfollow') {
+      const initialLength = user.followedSports.length;
+      user.followedSports = user.followedSports.filter(
+        sport => sport.sportId !== sportIdStr
+      );
+      updated = initialLength !== user.followedSports.length;
+      message = updated ? 
+        `You have unfollowed ${sportName || 'the sport'}` :
+        `Not following ${sportName || 'this sport'}`;
+    } else {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid action. Use "follow" or "unfollow"'
+      });
+    }
+
+    if (updated) {
+      await user.save();
+    }
+
+    console.log(`✅ Sport ${action}ed successfully. Updated: ${updated}`);
 
     res.json({
       success: true,
       message,
-      action: responseAction,
-      modified: result.modifiedCount > 0
+      action: updated ? (action === 'follow' ? 'followed' : 'unfollowed') : 'no_change',
+      followedSports: user.followedSports
     });
 
   } catch (error) {
